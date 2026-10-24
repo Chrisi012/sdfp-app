@@ -1,0 +1,2634 @@
+{
+  "_methodological_notes": {
+    "LAW_M7_explanation": "Il LAW inferiore di M7 (39,63%) rispetto a M6 (43,57%) riflette il maggior peso azionario mantenuto a fine orizzonte dall'Inflow Rebalancing, che riduce la componente di liquidit\u00e0 ponderata. Non \u00e8 un errore di calcolo.",
+    "ZFEL_definition": "Zero Forced Equity Liquidation: probabilit\u00e0 di adempiere al target H attingendo al comparto dedicato e all'eccedenza di V1 oltre il minimo operativo, senza vendita di asset azionari Core.",
+    "validation_scope": "Analisi stocastica controllata trentennale in-sample. Estensione walk-forward out-of-sample e benchmarking con prodotti Target-Date commerciali rimandati a ricerca futura."
+  },
+  "summary_metrics": {
+    "M0_Naive": {
+      "PGF_pct": 100.0,
+      "PGF_95CI": [
+        99.96160016293234,
+        100.0
+      ],
+      "UGF_pct": 0.0,
+      "UGF_95CI": [
+        0.0,
+        0.03839983706765957
+      ],
+      "UGF_dedicated_pct": 0.0,
+      "ZFEL_pct": 0.0,
+      "ZFEL_95CI": [
+        0.0,
+        0.03839983706765957
+      ],
+      "UGapF_pct": 100.0,
+      "UGapF_cond_pct": 100.0,
+      "Shortfall_CVaR_EUR": 32179.002546218126,
+      "Total_Shortfall_CVaR_EUR": 0.0,
+      "Market_MDD_mean_pct": 26.478582813799267,
+      "Market_MDD_median_pct": 25.739664716180457,
+      "Market_MDD_95th_pct": 37.54723224197195,
+      "Liquidity_MDD_mean_pct": 0.0,
+      "Liquidity_MDD_median_pct": 0.0,
+      "Liquidity_MDD_95th_pct": 0.0,
+      "Total_Wealth_MDD_mean_pct": 49.977765436613296,
+      "Total_Wealth_MDD_median_pct": 46.80336347160424,
+      "Total_Wealth_MDD_95th_pct": 95.03838091925115,
+      "MDD_95th_pct": 95.03838091925115,
+      "Realization_Tax_Drag_EUR": 12586.785962216527,
+      "Total_Friction_Cost_EUR": 35294.354928228735,
+      "Tax_Drag_EUR": 12586.785962216527,
+      "Tax_Breakdown": {
+        "tax_rebalance": 10651.655337034388,
+        "tax_shock_liquidation": 797.8710704730054,
+        "tax_milestone_liquidation": 1137.2595547091344,
+        "tax_coupons": 9328.396523388514,
+        "stamp_duty": 11003.500238353676,
+        "commissions": 2197.1104512444963,
+        "bid_ask_spread": 109.59874422516874,
+        "forced_liq_penalty": 68.96300880035879
+      },
+      "LAW_30y_median_pct": 42.73359980526558,
+      "Wealth": {
+        "8y": {
+          "W_fin_median": 36237.71151033907,
+          "W_fin_mean": 37260.419158906814,
+          "W_fin_p10": 22596.842628916762,
+          "W_fin_p90": 53395.521988598884,
+          "W_tot_median": 70188.82996076033,
+          "W_tot_mean": 71787.09921416316,
+          "W_tot_p10": 50003.222989199254,
+          "W_tot_p90": 95850.95049424286
+        },
+        "15y": {
+          "W_fin_median": 120352.07277094919,
+          "W_fin_mean": 125266.07072700183,
+          "W_fin_p10": 89658.13380790097,
+          "W_fin_p90": 166964.20489269416,
+          "W_tot_median": 199938.3662181677,
+          "W_tot_mean": 207939.24029388436,
+          "W_tot_p10": 148551.20642371563,
+          "W_tot_p90": 277530.5797714147
+        },
+        "20y": {
+          "W_fin_median": 211064.51922524004,
+          "W_fin_mean": 221153.37927874198,
+          "W_fin_p10": 154707.5141453363,
+          "W_fin_p90": 298473.7478218502,
+          "W_tot_median": 336189.3038389741,
+          "W_tot_mean": 353486.48175001,
+          "W_tot_p10": 241823.13155854068,
+          "W_tot_p90": 483939.9114102411
+        },
+        "30y": {
+          "W_fin_median": 499480.1388361888,
+          "W_fin_mean": 531503.2977655539,
+          "W_fin_p10": 342235.3022615343,
+          "W_fin_p90": 759665.6955350573,
+          "W_tot_median": 762260.8215930613,
+          "W_tot_mean": 817250.6053651326,
+          "W_tot_p10": 507596.16888634634,
+          "W_tot_p90": 1190822.057100395
+        }
+      }
+    },
+    "M1_Naive_Buf": {
+      "PGF_pct": 100.0,
+      "PGF_95CI": [
+        99.96160016293234,
+        100.0
+      ],
+      "UGF_pct": 0.0,
+      "UGF_95CI": [
+        0.0,
+        0.03839983706765957
+      ],
+      "UGF_dedicated_pct": 0.0,
+      "ZFEL_pct": 0.0,
+      "ZFEL_95CI": [
+        0.0,
+        0.03839983706765957
+      ],
+      "UGapF_pct": 99.65371017162357,
+      "UGapF_cond_pct": 99.65371017162357,
+      "Shortfall_CVaR_EUR": 32047.683745160713,
+      "Total_Shortfall_CVaR_EUR": 0.0,
+      "Market_MDD_mean_pct": 24.701361553125327,
+      "Market_MDD_median_pct": 23.909380014437833,
+      "Market_MDD_95th_pct": 35.274422631719276,
+      "Liquidity_MDD_mean_pct": 83.29052242841863,
+      "Liquidity_MDD_median_pct": 88.50222493948667,
+      "Liquidity_MDD_95th_pct": 100.0,
+      "Total_Wealth_MDD_mean_pct": 50.337068306205026,
+      "Total_Wealth_MDD_median_pct": 47.178826554421974,
+      "Total_Wealth_MDD_95th_pct": 93.82803357831689,
+      "MDD_95th_pct": 93.82803357831689,
+      "Realization_Tax_Drag_EUR": 11378.71042485995,
+      "Total_Friction_Cost_EUR": 33180.803404726496,
+      "Tax_Drag_EUR": 11378.71042485995,
+      "Tax_Breakdown": {
+        "tax_rebalance": 10244.969560755024,
+        "tax_shock_liquidation": 25.53223864540906,
+        "tax_milestone_liquidation": 1108.2086254595174,
+        "tax_coupons": 8873.632755529794,
+        "stamp_duty": 10739.28096117324,
+        "commissions": 2043.7922600470818,
+        "bid_ask_spread": 100.55730292938807,
+        "forced_liq_penalty": 44.82970018704281
+      },
+      "LAW_30y_median_pct": 43.115887998819126,
+      "Wealth": {
+        "8y": {
+          "W_fin_median": 34813.25006984367,
+          "W_fin_mean": 35738.89295115733,
+          "W_fin_p10": 22792.93968832638,
+          "W_fin_p90": 49876.001431161036,
+          "W_tot_median": 68722.36464009737,
+          "W_tot_mean": 70265.57300641367,
+          "W_tot_p10": 50335.56810354455,
+          "W_tot_p90": 92247.8389262697
+        },
+        "15y": {
+          "W_fin_median": 117579.95057631479,
+          "W_fin_mean": 121744.92532947846,
+          "W_fin_p10": 89310.58913719405,
+          "W_fin_p90": 159314.16001494366,
+          "W_tot_median": 196982.8740763793,
+          "W_tot_mean": 204418.09489636103,
+          "W_tot_p10": 148284.8186931071,
+          "W_tot_p90": 270094.8233019585
+        },
+        "20y": {
+          "W_fin_median": 206568.74028507734,
+          "W_fin_mean": 215661.5062314891,
+          "W_fin_p10": 153691.84469450614,
+          "W_fin_p90": 288538.18502023,
+          "W_tot_median": 331580.7890572005,
+          "W_tot_mean": 347994.60870275716,
+          "W_tot_p10": 240936.96204335187,
+          "W_tot_p90": 472110.5739690572
+        },
+        "30y": {
+          "W_fin_median": 489527.4743816792,
+          "W_fin_mean": 520249.9095495491,
+          "W_fin_p10": 339471.71970833075,
+          "W_fin_p90": 738727.4879291864,
+          "W_tot_median": 752580.3176466594,
+          "W_tot_mean": 805997.2171491276,
+          "W_tot_p10": 504691.8998373498,
+          "W_tot_p90": 1170148.178508339
+        }
+      }
+    },
+    "M2_Fair": {
+      "PGF_pct": 100.0,
+      "PGF_95CI": [
+        99.96160016293234,
+        100.0
+      ],
+      "UGF_pct": 0.0,
+      "UGF_95CI": [
+        0.0,
+        0.03839983706765957
+      ],
+      "UGF_dedicated_pct": 0.0,
+      "ZFEL_pct": 0.0,
+      "ZFEL_95CI": [
+        0.0,
+        0.03839983706765957
+      ],
+      "UGapF_pct": 99.89628061619024,
+      "UGapF_cond_pct": 99.89628061619024,
+      "Shortfall_CVaR_EUR": 32131.5530567599,
+      "Total_Shortfall_CVaR_EUR": 0.0,
+      "Market_MDD_mean_pct": 24.510713095585814,
+      "Market_MDD_median_pct": 23.730129900298362,
+      "Market_MDD_95th_pct": 34.98321767940641,
+      "Liquidity_MDD_mean_pct": 74.02289504070573,
+      "Liquidity_MDD_median_pct": 73.74919920920216,
+      "Liquidity_MDD_95th_pct": 100.0,
+      "Total_Wealth_MDD_mean_pct": 50.336488414357795,
+      "Total_Wealth_MDD_median_pct": 47.17630182743154,
+      "Total_Wealth_MDD_95th_pct": 94.19694011941195,
+      "MDD_95th_pct": 94.19694011941195,
+      "Realization_Tax_Drag_EUR": 11275.759598745972,
+      "Total_Friction_Cost_EUR": 32969.680740931944,
+      "Tax_Drag_EUR": 11275.759598745972,
+      "Tax_Breakdown": {
+        "tax_rebalance": 10155.854018246802,
+        "tax_shock_liquidation": 11.342378376043964,
+        "tax_milestone_liquidation": 1108.5632021231256,
+        "tax_coupons": 8801.13658656406,
+        "stamp_duty": 10711.245318476816,
+        "commissions": 2037.2056211124245,
+        "bid_ask_spread": 99.87035621759917,
+        "forced_liq_penalty": 44.463259815070785
+      },
+      "LAW_30y_median_pct": 43.35118416552262,
+      "Wealth": {
+        "8y": {
+          "W_fin_median": 34785.75681987759,
+          "W_fin_mean": 35691.540504880955,
+          "W_fin_p10": 22812.15558441811,
+          "W_fin_p90": 49740.96207178728,
+          "W_tot_median": 68697.75835139722,
+          "W_tot_mean": 70218.2205601373,
+          "W_tot_p10": 50374.77805231268,
+          "W_tot_p90": 92120.21341762757
+        },
+        "15y": {
+          "W_fin_median": 117369.59430905798,
+          "W_fin_mean": 121494.50149639802,
+          "W_fin_p10": 89387.18061119311,
+          "W_fin_p90": 158694.01851222376,
+          "W_tot_median": 196738.54926748603,
+          "W_tot_mean": 204167.67106328055,
+          "W_tot_p10": 148412.2259419912,
+          "W_tot_p90": 269488.1543934811
+        },
+        "20y": {
+          "W_fin_median": 206138.18220333342,
+          "W_fin_mean": 215118.12969817163,
+          "W_fin_p10": 153653.87844387267,
+          "W_fin_p90": 287272.867347136,
+          "W_tot_median": 331169.630301632,
+          "W_tot_mean": 347451.2321694396,
+          "W_tot_p10": 240972.38923115048,
+          "W_tot_p90": 470857.5078308829
+        },
+        "30y": {
+          "W_fin_median": 488202.88992889086,
+          "W_fin_mean": 518610.65751403855,
+          "W_fin_p10": 339266.7569046581,
+          "W_fin_p90": 735225.2691312897,
+          "W_tot_median": 751254.2766634409,
+          "W_tot_mean": 804357.9651136171,
+          "W_tot_p10": 504489.2829689064,
+          "W_tot_p90": 1166878.9139423575
+        }
+      }
+    },
+    "M3_SDFP_NoInflow": {
+      "PGF_pct": 100.0,
+      "PGF_95CI": [
+        99.96160016293234,
+        100.0
+      ],
+      "UGF_pct": 95.26,
+      "UGF_95CI": [
+        94.8258591964774,
+        95.65938127100894
+      ],
+      "UGF_dedicated_pct": 95.26,
+      "ZFEL_pct": 99.97,
+      "ZFEL_95CI": [
+        99.91182642277636,
+        99.98979678005821
+      ],
+      "UGapF_pct": 0.21568788122233148,
+      "UGapF_cond_pct": 4.550377240977458,
+      "Shortfall_CVaR_EUR": 1293.847855416763,
+      "Total_Shortfall_CVaR_EUR": 0.0,
+      "Market_MDD_mean_pct": 26.482943212574177,
+      "Market_MDD_median_pct": 25.507235601347162,
+      "Market_MDD_95th_pct": 39.203969964169566,
+      "Liquidity_MDD_mean_pct": 44.09104945966208,
+      "Liquidity_MDD_median_pct": 41.89172786639238,
+      "Liquidity_MDD_95th_pct": 68.58807001318577,
+      "Total_Wealth_MDD_mean_pct": 49.57578292278904,
+      "Total_Wealth_MDD_median_pct": 48.40672945021518,
+      "Total_Wealth_MDD_95th_pct": 63.46879100392558,
+      "MDD_95th_pct": 63.46879100392558,
+      "Realization_Tax_Drag_EUR": 1098.7409067795047,
+      "Total_Friction_Cost_EUR": 19194.952094324784,
+      "Tax_Drag_EUR": 1098.7409067795047,
+      "Tax_Breakdown": {
+        "tax_rebalance": 1098.6294419444025,
+        "tax_shock_liquidation": 0.1113299321638044,
+        "tax_milestone_liquidation": 0.00013490293842173103,
+        "tax_coupons": 5765.161423914203,
+        "stamp_duty": 10860.72427063829,
+        "commissions": 1363.0284435703275,
+        "bid_ask_spread": 107.28541499629375,
+        "forced_liq_penalty": 0.011634426169494396
+      },
+      "LAW_30y_median_pct": 43.25378270518853,
+      "Wealth": {
+        "8y": {
+          "W_fin_median": 31687.096765185648,
+          "W_fin_mean": 31730.999266237606,
+          "W_fin_p10": 24934.574187638653,
+          "W_fin_p90": 38597.859102609444,
+          "W_tot_median": 65440.36230347378,
+          "W_tot_mean": 66257.67932149395,
+          "W_tot_p10": 53644.714937949,
+          "W_tot_p90": 79889.8733181027
+        },
+        "15y": {
+          "W_fin_median": 112063.12287620927,
+          "W_fin_mean": 116748.40251773981,
+          "W_fin_p10": 88493.8907176054,
+          "W_fin_p90": 150950.53499773308,
+          "W_tot_median": 191952.77650691965,
+          "W_tot_mean": 199421.57208462237,
+          "W_tot_p10": 147940.59860172248,
+          "W_tot_p90": 261570.15944114426
+        },
+        "20y": {
+          "W_fin_median": 202818.28206677354,
+          "W_fin_mean": 214496.5665708041,
+          "W_fin_p10": 149344.0145025267,
+          "W_fin_p90": 292272.21760971984,
+          "W_tot_median": 327887.61227178667,
+          "W_tot_mean": 346829.66904207214,
+          "W_tot_p10": 237801.81427559268,
+          "W_tot_p90": 475960.81142370234
+        },
+        "30y": {
+          "W_fin_median": 489752.8518042555,
+          "W_fin_mean": 545208.73349275,
+          "W_fin_p10": 330672.5251677842,
+          "W_fin_p90": 825783.4556498895,
+          "W_tot_median": 753753.7709705087,
+          "W_tot_mean": 830956.0410923286,
+          "W_tot_p10": 497457.02174235124,
+          "W_tot_p90": 1258246.8723047036
+        }
+      }
+    },
+    "M4_SDFP_ScenB": {
+      "PGF_pct": 100.0,
+      "PGF_95CI": [
+        99.96160016293234,
+        100.0
+      ],
+      "UGF_pct": 99.79,
+      "UGF_95CI": [
+        99.67916061274641,
+        99.86260082950162
+      ],
+      "UGF_dedicated_pct": 99.79,
+      "ZFEL_pct": 99.99,
+      "ZFEL_95CI": [
+        99.94337311025987,
+        99.99823473263989
+      ],
+      "UGapF_pct": 0.012200926348221588,
+      "UGapF_cond_pct": 5.809964927724566,
+      "Shortfall_CVaR_EUR": 72.66620302808923,
+      "Total_Shortfall_CVaR_EUR": 0.0,
+      "Market_MDD_mean_pct": 28.034899227443077,
+      "Market_MDD_median_pct": 27.05071199898535,
+      "Market_MDD_95th_pct": 41.41154740455812,
+      "Liquidity_MDD_mean_pct": 39.52259773446537,
+      "Liquidity_MDD_median_pct": 36.84174789308921,
+      "Liquidity_MDD_95th_pct": 66.34300467298401,
+      "Total_Wealth_MDD_mean_pct": 44.260812713840956,
+      "Total_Wealth_MDD_median_pct": 42.889810838788065,
+      "Total_Wealth_MDD_95th_pct": 59.661395559446596,
+      "MDD_95th_pct": 59.661395559446596,
+      "Realization_Tax_Drag_EUR": 411.5729151793357,
+      "Total_Friction_Cost_EUR": 24391.837868211627,
+      "Tax_Drag_EUR": 411.5729151793357,
+      "Tax_Breakdown": {
+        "tax_rebalance": 411.48913059024454,
+        "tax_shock_liquidation": 0.083760984021679,
+        "tax_milestone_liquidation": 2.3605069530866902e-05,
+        "tax_coupons": 7396.393800862822,
+        "stamp_duty": 14841.828544106298,
+        "commissions": 1591.825706670656,
+        "bid_ask_spread": 150.2070939574803,
+        "forced_liq_penalty": 0.009807435035343868
+      },
+      "LAW_30y_median_pct": 42.78210546045519,
+      "Wealth": {
+        "8y": {
+          "W_fin_median": 39760.15661853744,
+          "W_fin_mean": 40021.82953638192,
+          "W_fin_p10": 32262.12392988192,
+          "W_fin_p90": 48154.5991048842,
+          "W_tot_median": 73517.13737021617,
+          "W_tot_mean": 74548.50959163826,
+          "W_tot_p10": 60634.026948569524,
+          "W_tot_p90": 89548.9952771097
+        },
+        "15y": {
+          "W_fin_median": 147208.82941530316,
+          "W_fin_mean": 153403.39725877263,
+          "W_fin_p10": 115047.4889208871,
+          "W_fin_p90": 199413.70237055956,
+          "W_tot_median": 227156.8839328973,
+          "W_tot_mean": 236076.56682565517,
+          "W_tot_p10": 174576.00475693817,
+          "W_tot_p90": 310275.5132278075
+        },
+        "20y": {
+          "W_fin_median": 273792.2363877655,
+          "W_fin_mean": 291813.7999909528,
+          "W_fin_p10": 201314.43386381288,
+          "W_fin_p90": 402119.32473138766,
+          "W_tot_median": 399701.5364428373,
+          "W_tot_mean": 424146.90246222087,
+          "W_tot_p10": 289228.3030153117,
+          "W_tot_p90": 584964.3165206667
+        },
+        "30y": {
+          "W_fin_median": 691630.1816400405,
+          "W_fin_mean": 771524.8795480916,
+          "W_fin_p10": 466768.7259157662,
+          "W_fin_p90": 1171044.3051881609,
+          "W_tot_median": 955094.8249817141,
+          "W_tot_mean": 1057272.18714767,
+          "W_tot_p10": 632589.4710336159,
+          "W_tot_p90": 1598686.8296225907
+        }
+      }
+    },
+    "M5_SDFP_ScenC": {
+      "PGF_pct": 100.0,
+      "PGF_95CI": [
+        99.96160016293234,
+        100.0
+      ],
+      "UGF_pct": 95.26,
+      "UGF_95CI": [
+        94.8258591964774,
+        95.65938127100894
+      ],
+      "UGF_dedicated_pct": 95.26,
+      "ZFEL_pct": 99.97,
+      "ZFEL_95CI": [
+        99.91182642277636,
+        99.98979678005821
+      ],
+      "UGapF_pct": 0.21568788122233148,
+      "UGapF_cond_pct": 4.550377240977458,
+      "Shortfall_CVaR_EUR": 1293.847855416763,
+      "Total_Shortfall_CVaR_EUR": 0.0,
+      "Market_MDD_mean_pct": 26.587648226877008,
+      "Market_MDD_median_pct": 25.61626838690094,
+      "Market_MDD_95th_pct": 39.3660044491352,
+      "Liquidity_MDD_mean_pct": 44.09301412285842,
+      "Liquidity_MDD_median_pct": 41.88699800337295,
+      "Liquidity_MDD_95th_pct": 68.58807001318577,
+      "Total_Wealth_MDD_mean_pct": 49.57611028602019,
+      "Total_Wealth_MDD_median_pct": 48.40672945021518,
+      "Total_Wealth_MDD_95th_pct": 63.46879100392558,
+      "MDD_95th_pct": 63.46879100392558,
+      "Realization_Tax_Drag_EUR": 615.9075771980878,
+      "Total_Friction_Cost_EUR": 18741.445690199296,
+      "Tax_Drag_EUR": 615.9075771980878,
+      "Tax_Breakdown": {
+        "tax_rebalance": 615.7961123629857,
+        "tax_shock_liquidation": 0.1113299321638044,
+        "tax_milestone_liquidation": 0.00013490293842173103,
+        "tax_coupons": 5768.867025708691,
+        "stamp_duty": 10900.870372277795,
+        "commissions": 1349.8669321877192,
+        "bid_ask_spread": 105.92214840083565,
+        "forced_liq_penalty": 0.011634426169494396
+      },
+      "LAW_30y_median_pct": 43.1527612062884,
+      "Wealth": {
+        "8y": {
+          "W_fin_median": 31687.096765185648,
+          "W_fin_mean": 31730.999266237606,
+          "W_fin_p10": 24934.574187638653,
+          "W_fin_p90": 38597.859102609444,
+          "W_tot_median": 65440.36230347378,
+          "W_tot_mean": 66257.67932149395,
+          "W_tot_p10": 53644.714937949,
+          "W_tot_p90": 79889.8733181027
+        },
+        "15y": {
+          "W_fin_median": 112063.12287620927,
+          "W_fin_mean": 116756.66411311716,
+          "W_fin_p10": 88493.8907176054,
+          "W_fin_p90": 150995.59377854283,
+          "W_tot_median": 191952.77650691965,
+          "W_tot_mean": 199429.83367999972,
+          "W_tot_p10": 147940.59860172248,
+          "W_tot_p90": 261562.85009543196
+        },
+        "20y": {
+          "W_fin_median": 202961.97622678295,
+          "W_fin_mean": 215310.60778848676,
+          "W_fin_p10": 149460.31688497178,
+          "W_fin_p90": 293671.30340635864,
+          "W_tot_median": 327771.7214924813,
+          "W_tot_mean": 347643.71025975473,
+          "W_tot_p10": 237950.2164376628,
+          "W_tot_p90": 478485.71564749675
+        },
+        "30y": {
+          "W_fin_median": 490983.33162139857,
+          "W_fin_mean": 547802.2931333015,
+          "W_fin_p10": 330906.1842821772,
+          "W_fin_p90": 831117.0170303509,
+          "W_tot_median": 754638.1609311998,
+          "W_tot_mean": 833549.6007328801,
+          "W_tot_p10": 497385.17255706474,
+          "W_tot_p90": 1263164.455633136
+        }
+      }
+    },
+    "M6_Fair_LiabMatch": {
+      "PGF_pct": 100.0,
+      "PGF_95CI": [
+        99.96160016293234,
+        100.0
+      ],
+      "UGF_pct": 98.71,
+      "UGF_95CI": [
+        98.46937960235127,
+        98.9132112763774
+      ],
+      "UGF_dedicated_pct": 98.71,
+      "ZFEL_pct": 100.0,
+      "ZFEL_95CI": [
+        99.96160016293234,
+        100.0
+      ],
+      "UGapF_pct": 0.04796299107550251,
+      "UGapF_cond_pct": 3.7180613236823654,
+      "Shortfall_CVaR_EUR": 290.8133530312973,
+      "Total_Shortfall_CVaR_EUR": 0.0,
+      "Market_MDD_mean_pct": 23.49954499478639,
+      "Market_MDD_median_pct": 22.759202113683553,
+      "Market_MDD_95th_pct": 33.999019876404475,
+      "Liquidity_MDD_mean_pct": 81.13570291016178,
+      "Liquidity_MDD_median_pct": 81.23981530788413,
+      "Liquidity_MDD_95th_pct": 100.0,
+      "Total_Wealth_MDD_mean_pct": 51.02746575768472,
+      "Total_Wealth_MDD_median_pct": 47.81926157787083,
+      "Total_Wealth_MDD_95th_pct": 89.887924840264,
+      "MDD_95th_pct": 89.887924840264,
+      "Realization_Tax_Drag_EUR": 9507.265869203678,
+      "Total_Friction_Cost_EUR": 30896.971171637742,
+      "Tax_Drag_EUR": 9507.265869203678,
+      "Tax_Breakdown": {
+        "tax_rebalance": 9495.761103129536,
+        "tax_shock_liquidation": 11.030473889673981,
+        "tax_milestone_liquidation": 0.47429218446643434,
+        "tax_coupons": 8828.269267598158,
+        "stamp_duty": 10394.221409893415,
+        "commissions": 2066.3224619830016,
+        "bid_ask_spread": 100.44481073791222,
+        "forced_liq_penalty": 0.4473522215804629
+      },
+      "LAW_30y_median_pct": 43.566220285466216,
+      "Wealth": {
+        "8y": {
+          "W_fin_median": 32416.149321479843,
+          "W_fin_mean": 32369.466245080734,
+          "W_fin_p10": 25229.57979695053,
+          "W_fin_p90": 39337.335994880654,
+          "W_tot_median": 66188.92108514906,
+          "W_tot_mean": 66896.14630033707,
+          "W_tot_p10": 53929.26423837988,
+          "W_tot_p90": 80974.40388921161
+        },
+        "15y": {
+          "W_fin_median": 113474.54041285033,
+          "W_fin_mean": 116574.34257226074,
+          "W_fin_p10": 89487.74302783076,
+          "W_fin_p90": 147907.5278721787,
+          "W_tot_median": 193343.73012908932,
+          "W_tot_mean": 199247.51213914328,
+          "W_tot_p10": 149000.94539239194,
+          "W_tot_p90": 257265.62986468207
+        },
+        "20y": {
+          "W_fin_median": 200972.52008043835,
+          "W_fin_mean": 208553.98964481128,
+          "W_fin_p10": 152743.72806691614,
+          "W_fin_p90": 273637.64495236473,
+          "W_tot_median": 325766.40070957225,
+          "W_tot_mean": 340887.09211607935,
+          "W_tot_p10": 240728.65188691445,
+          "W_tot_p90": 456981.3726814446
+        },
+        "30y": {
+          "W_fin_median": 478136.57060803473,
+          "W_fin_mean": 507213.73961541307,
+          "W_fin_p10": 336285.2844137089,
+          "W_fin_p90": 716645.22251353,
+          "W_tot_median": 742314.9249883548,
+          "W_tot_mean": 792961.0472149918,
+          "W_tot_p10": 502228.3219067682,
+          "W_tot_p90": 1147629.9427125803
+        }
+      }
+    },
+    "M7_Fair_LiabInflowReb": {
+      "PGF_pct": 100.0,
+      "PGF_95CI": [
+        99.96160016293234,
+        100.0
+      ],
+      "UGF_pct": 98.71,
+      "UGF_95CI": [
+        98.46937960235127,
+        98.9132112763774
+      ],
+      "UGF_dedicated_pct": 98.71,
+      "ZFEL_pct": 99.96000000000001,
+      "ZFEL_95CI": [
+        99.8971871664643,
+        99.9844437163377
+      ],
+      "UGapF_pct": 0.04797262893266022,
+      "UGapF_cond_pct": 3.7188084443922653,
+      "Shortfall_CVaR_EUR": 290.8718018879745,
+      "Total_Shortfall_CVaR_EUR": 0.0,
+      "Market_MDD_mean_pct": 24.777557899496877,
+      "Market_MDD_median_pct": 23.823401329325222,
+      "Market_MDD_95th_pct": 36.695884910218965,
+      "Liquidity_MDD_mean_pct": 81.16046242705072,
+      "Liquidity_MDD_median_pct": 81.25269466457642,
+      "Liquidity_MDD_95th_pct": 100.0,
+      "Total_Wealth_MDD_mean_pct": 50.903856245999044,
+      "Total_Wealth_MDD_median_pct": 47.68488427593742,
+      "Total_Wealth_MDD_95th_pct": 89.887924840264,
+      "MDD_95th_pct": 89.887924840264,
+      "Realization_Tax_Drag_EUR": 12.555670018557661,
+      "Total_Friction_Cost_EUR": 20456.727718958035,
+      "Tax_Drag_EUR": 12.555670018557661,
+      "Tax_Breakdown": {
+        "tax_rebalance": 0.0,
+        "tax_shock_liquidation": 12.550468578366248,
+        "tax_milestone_liquidation": 0.005201440191415517,
+        "tax_coupons": 8222.275305641804,
+        "stamp_duty": 10744.975055057443,
+        "commissions": 1389.6185031125806,
+        "bid_ask_spread": 86.87708730736777,
+        "forced_liq_penalty": 0.42609782028246357
+      },
+      "LAW_30y_median_pct": 39.627247255724306,
+      "Wealth": {
+        "8y": {
+          "W_fin_median": 32605.83957973633,
+          "W_fin_mean": 32553.661928472982,
+          "W_fin_p10": 25290.196292179207,
+          "W_fin_p90": 39654.58615633977,
+          "W_tot_median": 66410.32298318381,
+          "W_tot_mean": 67080.34198372933,
+          "W_tot_p10": 53921.669370787284,
+          "W_tot_p90": 81198.22633667989
+        },
+        "15y": {
+          "W_fin_median": 115065.53538428561,
+          "W_fin_mean": 118154.80004751043,
+          "W_fin_p10": 89832.7667369456,
+          "W_fin_p90": 150930.37133277996,
+          "W_tot_median": 194829.2281719028,
+          "W_tot_mean": 200827.96961439296,
+          "W_tot_p10": 149198.39206166178,
+          "W_tot_p90": 260571.6182831688
+        },
+        "20y": {
+          "W_fin_median": 205234.4159037419,
+          "W_fin_mean": 213557.93080371403,
+          "W_fin_p10": 153214.85703450412,
+          "W_fin_p90": 283886.47667060565,
+          "W_tot_median": 330025.20523629076,
+          "W_tot_mean": 345891.03327498207,
+          "W_tot_p10": 241175.1989052134,
+          "W_tot_p90": 467260.5942876238
+        },
+        "30y": {
+          "W_fin_median": 495312.229229644,
+          "W_fin_mean": 535666.7968725233,
+          "W_fin_p10": 338128.36701239395,
+          "W_fin_p90": 776236.3845938131,
+          "W_tot_median": 759531.1113319877,
+          "W_tot_mean": 821414.1044721018,
+          "W_tot_p10": 504014.4923393617,
+          "W_tot_p90": 1209703.025925461
+        }
+      }
+    }
+  },
+  "drawdown_three_metrics": {
+    "M0_Naive": {
+      "Market_MDD_mean_pct": 26.478582813799267,
+      "Market_MDD_median_pct": 25.739664716180457,
+      "Market_MDD_95th_pct": 37.54723224197195,
+      "Liquidity_MDD_mean_pct": 0.0,
+      "Liquidity_MDD_median_pct": 0.0,
+      "Liquidity_MDD_95th_pct": 0.0,
+      "Total_Wealth_MDD_mean_pct": 49.977765436613296,
+      "Total_Wealth_MDD_median_pct": 46.80336347160424,
+      "Total_Wealth_MDD_95th_pct": 95.03838091925115
+    },
+    "M1_Naive_Buf": {
+      "Market_MDD_mean_pct": 24.701361553125327,
+      "Market_MDD_median_pct": 23.909380014437833,
+      "Market_MDD_95th_pct": 35.274422631719276,
+      "Liquidity_MDD_mean_pct": 83.29052242841863,
+      "Liquidity_MDD_median_pct": 88.50222493948667,
+      "Liquidity_MDD_95th_pct": 100.0,
+      "Total_Wealth_MDD_mean_pct": 50.337068306205026,
+      "Total_Wealth_MDD_median_pct": 47.178826554421974,
+      "Total_Wealth_MDD_95th_pct": 93.82803357831689
+    },
+    "M2_Fair": {
+      "Market_MDD_mean_pct": 24.510713095585814,
+      "Market_MDD_median_pct": 23.730129900298362,
+      "Market_MDD_95th_pct": 34.98321767940641,
+      "Liquidity_MDD_mean_pct": 74.02289504070573,
+      "Liquidity_MDD_median_pct": 73.74919920920216,
+      "Liquidity_MDD_95th_pct": 100.0,
+      "Total_Wealth_MDD_mean_pct": 50.336488414357795,
+      "Total_Wealth_MDD_median_pct": 47.17630182743154,
+      "Total_Wealth_MDD_95th_pct": 94.19694011941195
+    },
+    "M3_SDFP_NoInflow": {
+      "Market_MDD_mean_pct": 26.482943212574177,
+      "Market_MDD_median_pct": 25.507235601347162,
+      "Market_MDD_95th_pct": 39.203969964169566,
+      "Liquidity_MDD_mean_pct": 44.09104945966208,
+      "Liquidity_MDD_median_pct": 41.89172786639238,
+      "Liquidity_MDD_95th_pct": 68.58807001318577,
+      "Total_Wealth_MDD_mean_pct": 49.57578292278904,
+      "Total_Wealth_MDD_median_pct": 48.40672945021518,
+      "Total_Wealth_MDD_95th_pct": 63.46879100392558
+    },
+    "M4_SDFP_ScenB": {
+      "Market_MDD_mean_pct": 28.034899227443077,
+      "Market_MDD_median_pct": 27.05071199898535,
+      "Market_MDD_95th_pct": 41.41154740455812,
+      "Liquidity_MDD_mean_pct": 39.52259773446537,
+      "Liquidity_MDD_median_pct": 36.84174789308921,
+      "Liquidity_MDD_95th_pct": 66.34300467298401,
+      "Total_Wealth_MDD_mean_pct": 44.260812713840956,
+      "Total_Wealth_MDD_median_pct": 42.889810838788065,
+      "Total_Wealth_MDD_95th_pct": 59.661395559446596
+    },
+    "M5_SDFP_ScenC": {
+      "Market_MDD_mean_pct": 26.587648226877008,
+      "Market_MDD_median_pct": 25.61626838690094,
+      "Market_MDD_95th_pct": 39.3660044491352,
+      "Liquidity_MDD_mean_pct": 44.09301412285842,
+      "Liquidity_MDD_median_pct": 41.88699800337295,
+      "Liquidity_MDD_95th_pct": 68.58807001318577,
+      "Total_Wealth_MDD_mean_pct": 49.57611028602019,
+      "Total_Wealth_MDD_median_pct": 48.40672945021518,
+      "Total_Wealth_MDD_95th_pct": 63.46879100392558
+    },
+    "M6_Fair_LiabMatch": {
+      "Market_MDD_mean_pct": 23.49954499478639,
+      "Market_MDD_median_pct": 22.759202113683553,
+      "Market_MDD_95th_pct": 33.999019876404475,
+      "Liquidity_MDD_mean_pct": 81.13570291016178,
+      "Liquidity_MDD_median_pct": 81.23981530788413,
+      "Liquidity_MDD_95th_pct": 100.0,
+      "Total_Wealth_MDD_mean_pct": 51.02746575768472,
+      "Total_Wealth_MDD_median_pct": 47.81926157787083,
+      "Total_Wealth_MDD_95th_pct": 89.887924840264
+    },
+    "M7_Fair_LiabInflowReb": {
+      "Market_MDD_mean_pct": 24.777557899496877,
+      "Market_MDD_median_pct": 23.823401329325222,
+      "Market_MDD_95th_pct": 36.695884910218965,
+      "Liquidity_MDD_mean_pct": 81.16046242705072,
+      "Liquidity_MDD_median_pct": 81.25269466457642,
+      "Liquidity_MDD_95th_pct": 100.0,
+      "Total_Wealth_MDD_mean_pct": 50.903856245999044,
+      "Total_Wealth_MDD_median_pct": 47.68488427593742,
+      "Total_Wealth_MDD_95th_pct": 89.887924840264
+    }
+  },
+  "paired_hypothesis_tests": {
+    "M5_vs_M2_Fair": {
+      "comparison": "M5 (Full S-DFP) vs M2 (Fair Benchmark)",
+      "p_value_wilcoxon": 3.26717394665613e-216,
+      "diff_marginal_medians": 3383.8842677589273,
+      "median_of_paired_differences": 7075.1426755346765,
+      "hodges_lehmann_median_diff": 13189.602737428766,
+      "hodges_lehmann_95ci": [
+        11086.09974913986,
+        15412.723390692263
+      ],
+      "rank_biserial_correlation": 0.3623908409159084,
+      "paired_sign_effect_size": 0.1794,
+      "cliffs_delta": 0.0152755,
+      "statistically_significant_001": true,
+      "p_value_adjusted_bh": 6.53434789331226e-216,
+      "significant_bh_fdr_05": true
+    },
+    "M5_vs_M6_FairLiab": {
+      "comparison": "M5 (Full S-DFP) vs M6 (Fair + Liability Match)",
+      "p_value_wilcoxon": 0.0,
+      "diff_marginal_medians": 12323.235942845,
+      "median_of_paired_differences": 14151.451687441004,
+      "hodges_lehmann_median_diff": 22128.665211844287,
+      "hodges_lehmann_95ci": [
+        19859.17452020425,
+        24535.86480574531
+      ],
+      "rank_biserial_correlation": 0.6200059594040596,
+      "paired_sign_effect_size": 0.4036,
+      "cliffs_delta": 0.0355295,
+      "statistically_significant_001": true,
+      "p_value_adjusted_bh": 0.0,
+      "significant_bh_fdr_05": true
+    },
+    "M5_vs_M7_FairLiabInflowReb": {
+      "comparison": "M5 (Full S-DFP) vs M7 (Fair + Liab Match + Inflow Reb)",
+      "p_value_wilcoxon": 2.339579014582767e-44,
+      "diff_marginal_medians": -4892.950400787871,
+      "median_of_paired_differences": 1031.5222720856545,
+      "hodges_lehmann_median_diff": 3829.9768450453703,
+      "hodges_lehmann_95ci": [
+        2521.7728634245577,
+        5194.300442445761
+      ],
+      "rank_biserial_correlation": 0.16132042795720428,
+      "paired_sign_effect_size": 0.0352,
+      "cliffs_delta": -0.003832,
+      "statistically_significant_001": true,
+      "p_value_adjusted_bh": 3.119438686110356e-44,
+      "significant_bh_fdr_05": true
+    },
+    "M5_vs_M0_Naive": {
+      "comparison": "M5 (Full S-DFP) vs M0 (Naive Baseline)",
+      "p_value_wilcoxon": 1.1017972780787441e-14,
+      "diff_marginal_medians": -7622.660661861533,
+      "median_of_paired_differences": -850.8553440163087,
+      "hodges_lehmann_median_diff": 3149.8307519933005,
+      "hodges_lehmann_95ci": [
+        1289.0059693451622,
+        5076.7213521819795
+      ],
+      "rank_biserial_correlation": 0.08922055794420558,
+      "paired_sign_effect_size": -0.0192,
+      "cliffs_delta": -0.0070155,
+      "statistically_significant_001": true,
+      "p_value_adjusted_bh": 1.1017972780787441e-14,
+      "significant_bh_fdr_05": true
+    }
+  },
+  "vaso3a_residual_inflation_risk": {
+    "RIR_Nominal": 0.05424670763551449,
+    "RIR_Real": 0.06840257497462163,
+    "RIR_Mixed": 0.059070277424591235,
+    "RIR_Reduction_Mixed_vs_Nominal_pct": -8.891912522113742,
+    "Nominal_Strategy": {
+      "RIR_overall": 0.05424670763551449,
+      "RIR_success_paths": 0.056598709821907095,
+      "RIR_shortfall_paths": 0.04087462723445744,
+      "Funding_Ratio_p10": 0.986804439677173,
+      "Funding_Ratio_median": 1.0368651759711611,
+      "Funding_Ratio_p90": 1.085123605897546
+    },
+    "Real_Linkers_Strategy": {
+      "RIR_overall": 0.06840257497462163,
+      "RIR_success_paths": 0.06917468703662427,
+      "RIR_shortfall_paths": 0.05158135377722517,
+      "Funding_Ratio_p10": 1.0174196619234717,
+      "Funding_Ratio_median": 1.0628358579456725,
+      "Funding_Ratio_p90": 1.0972982401896294
+    },
+    "Mixed_Hybrid_Strategy": {
+      "RIR_overall": 0.059070277424591235,
+      "RIR_success_paths": 0.06000066890877258,
+      "RIR_shortfall_paths": 0.04717633297059618,
+      "Funding_Ratio_p10": 1.0047253938025509,
+      "Funding_Ratio_median": 1.0500815536906363,
+      "Funding_Ratio_p90": 1.087448041250444
+    }
+  },
+  "V3a_coupon": {
+    "config": "coupon",
+    "RIR_Nominal": 0.05424670763551449,
+    "RIR_Real": 0.06840257497462163,
+    "RIR_Mixed": 0.059070277424591235,
+    "RIR_Reduction_Mixed_vs_Nominal_pct": -8.891912522113742,
+    "Nominal_Strategy": {
+      "RIR_overall": 0.05424670763551449,
+      "RIR_success_paths": 0.056598709821907095,
+      "RIR_shortfall_paths": 0.04087462723445744,
+      "Funding_Ratio_p10": 0.986804439677173,
+      "Funding_Ratio_median": 1.0368651759711611,
+      "Funding_Ratio_p90": 1.085123605897546
+    },
+    "Real_Linkers_Strategy": {
+      "RIR_overall": 0.06840257497462163,
+      "RIR_success_paths": 0.06917468703662427,
+      "RIR_shortfall_paths": 0.05158135377722517,
+      "Funding_Ratio_p10": 1.0174196619234717,
+      "Funding_Ratio_median": 1.0628358579456725,
+      "Funding_Ratio_p90": 1.0972982401896294
+    },
+    "Mixed_Hybrid_Strategy": {
+      "RIR_overall": 0.059070277424591235,
+      "RIR_success_paths": 0.06000066890877258,
+      "RIR_shortfall_paths": 0.04717633297059618,
+      "Funding_Ratio_p10": 1.0047253938025509,
+      "Funding_Ratio_median": 1.0500815536906363,
+      "Funding_Ratio_p90": 1.087448041250444
+    }
+  },
+  "V3a_zerocoupon": {
+    "config": "zerocoupon",
+    "RIR_Nominal": 0.05920145284780672,
+    "RIR_Real": 0.06244242758882318,
+    "RIR_Mixed": 0.06007512726378869,
+    "Nominal_Strategy": {
+      "RIR_overall": 0.05920145284780672,
+      "RIR_success_paths": 0.059471867138188576,
+      "RIR_shortfall_paths": 0.054839303049311075,
+      "Funding_Ratio_p10": 1.0096220357066013,
+      "Funding_Ratio_median": 1.047702824200562,
+      "Funding_Ratio_p90": 1.0890485362845952
+    },
+    "Real_Linkers_Strategy": {
+      "RIR_overall": 0.06244242758882318,
+      "RIR_success_paths": 0.0633244283114512,
+      "RIR_shortfall_paths": 0.05022980574011145,
+      "Funding_Ratio_p10": 1.006036163420396,
+      "Funding_Ratio_median": 1.05035493402537,
+      "Funding_Ratio_p90": 1.094545798305011
+    },
+    "Mixed_Hybrid_Strategy": {
+      "RIR_overall": 0.06007512726378869,
+      "RIR_success_paths": 0.06044187882162284,
+      "RIR_shortfall_paths": 0.05419275257277751,
+      "Funding_Ratio_p10": 1.0101505849116497,
+      "Funding_Ratio_median": 1.0493767964665288,
+      "Funding_Ratio_p90": 1.0895180928835984
+    },
+    "note": "Zero-coupon pricing modeled via P = F / (1 + y)^T with capital gains taxation applied exclusively at maturity H (12.5% on sovereign bonds). Pure zero-coupon bonds eliminate intermediate coupon reinvestment risk. In the Italian retail market, zero-coupon sovereign bonds exist primarily as nominal instruments (BOT, CTZ, BTP strips), while inflation-linked zero-coupon securities represent a theoretical benchmark."
+  },
+  "sensitivity_analysis_oat": {
+    "mu_eq": [
+      {
+        "param_value": 0.045,
+        "PGF": 100.0,
+        "UGF": 93.4,
+        "UGapF": 0.34518093767752756,
+        "Shortfall_CVaR": 1962.6016631172038,
+        "Wealth_30y_median": 579571.7764431932,
+        "Market_MDD_95th": 43.00592643287563,
+        "Total_Wealth_MDD_95th": 66.51949880665794,
+        "MDD_95th": 66.51949880665794,
+        "Tax_Drag": 242.78261634191355
+      },
+      {
+        "param_value": 0.06,
+        "PGF": 100.0,
+        "UGF": 93.60000000000001,
+        "UGapF": 0.3035395111162384,
+        "Shortfall_CVaR": 1758.8972391926122,
+        "Wealth_30y_median": 664466.7704626706,
+        "Market_MDD_95th": 41.51980493000374,
+        "Total_Wealth_MDD_95th": 64.989782908786,
+        "MDD_95th": 64.989782908786,
+        "Tax_Drag": 348.8567514084383
+      },
+      {
+        "param_value": 0.075,
+        "PGF": 100.0,
+        "UGF": 93.8,
+        "UGapF": 0.27531667828406564,
+        "Shortfall_CVaR": 1616.083719546263,
+        "Wealth_30y_median": 769095.9283414823,
+        "Market_MDD_95th": 40.14070391494463,
+        "Total_Wealth_MDD_95th": 63.821161802210234,
+        "MDD_95th": 63.821161802210234,
+        "Tax_Drag": 617.3564206129738
+      },
+      {
+        "param_value": 0.09,
+        "PGF": 100.0,
+        "UGF": 94.39999999999999,
+        "UGapF": 0.2606690646511974,
+        "Shortfall_CVaR": 1555.8192318748486,
+        "Wealth_30y_median": 902712.532098898,
+        "Market_MDD_95th": 38.61612029911768,
+        "Total_Wealth_MDD_95th": 63.50276967281343,
+        "MDD_95th": 63.50276967281343,
+        "Tax_Drag": 1109.9118139735367
+      }
+    ],
+    "sigma_eq": [
+      {
+        "param_value": 0.12,
+        "PGF": 100.0,
+        "UGF": 95.6,
+        "UGapF": 0.18718824155314986,
+        "Shortfall_CVaR": 1134.3697334545454,
+        "Wealth_30y_median": 806578.9492748729,
+        "Market_MDD_95th": 27.917189601014353,
+        "Total_Wealth_MDD_95th": 63.24187147661521,
+        "MDD_95th": 63.24187147661521,
+        "Tax_Drag": 391.6328182842117
+      },
+      {
+        "param_value": 0.165,
+        "PGF": 100.0,
+        "UGF": 93.8,
+        "UGapF": 0.27531667828406564,
+        "Shortfall_CVaR": 1616.083719546263,
+        "Wealth_30y_median": 769095.9283414823,
+        "Market_MDD_95th": 40.14070391494463,
+        "Total_Wealth_MDD_95th": 63.821161802210234,
+        "MDD_95th": 63.821161802210234,
+        "Tax_Drag": 617.3564206129738
+      },
+      {
+        "param_value": 0.22,
+        "PGF": 100.0,
+        "UGF": 91.8,
+        "UGapF": 0.45669991949024313,
+        "Shortfall_CVaR": 2411.9920897526513,
+        "Wealth_30y_median": 720217.5641992486,
+        "Market_MDD_95th": 52.839790684862606,
+        "Total_Wealth_MDD_95th": 66.51949880665794,
+        "MDD_95th": 66.51949880665794,
+        "Tax_Drag": 988.3812369354464
+      },
+      {
+        "param_value": 0.28,
+        "PGF": 100.0,
+        "UGF": 89.2,
+        "UGapF": 0.6231282185809391,
+        "Shortfall_CVaR": 2901.633222619878,
+        "Wealth_30y_median": 658768.5260599372,
+        "Market_MDD_95th": 63.256436886678955,
+        "Total_Wealth_MDD_95th": 66.55495939458311,
+        "MDD_95th": 66.55495939458311,
+        "Tax_Drag": 1414.7446647936354
+      }
+    ],
+    "theta_pi": [
+      {
+        "param_value": 0.01,
+        "PGF": 100.0,
+        "UGF": 97.39999999999999,
+        "UGapF": 0.08939353373371907,
+        "Shortfall_CVaR": 506.53021490518995,
+        "Wealth_30y_median": 780830.1898808249,
+        "Market_MDD_95th": 41.222414303935466,
+        "Total_Wealth_MDD_95th": 63.057110545538485,
+        "MDD_95th": 63.057110545538485,
+        "Tax_Drag": 620.1581902612731
+      },
+      {
+        "param_value": 0.02,
+        "PGF": 100.0,
+        "UGF": 93.8,
+        "UGapF": 0.27531667828406564,
+        "Shortfall_CVaR": 1616.083719546263,
+        "Wealth_30y_median": 769095.9283414823,
+        "Market_MDD_95th": 40.14070391494463,
+        "Total_Wealth_MDD_95th": 63.821161802210234,
+        "MDD_95th": 63.821161802210234,
+        "Tax_Drag": 617.3564206129738
+      },
+      {
+        "param_value": 0.035,
+        "PGF": 100.0,
+        "UGF": 80.60000000000001,
+        "UGapF": 1.1109560867730637,
+        "Shortfall_CVaR": 4104.389951322933,
+        "Wealth_30y_median": 756118.5172234687,
+        "Market_MDD_95th": 38.030654126553216,
+        "Total_Wealth_MDD_95th": 66.53356349008934,
+        "MDD_95th": 66.53356349008934,
+        "Tax_Drag": 550.0762675440812
+      },
+      {
+        "param_value": 0.05,
+        "PGF": 100.0,
+        "UGF": 40.0,
+        "UGapF": 3.901300051921687,
+        "Shortfall_CVaR": 6871.678793987474,
+        "Wealth_30y_median": 735843.8796479672,
+        "Market_MDD_95th": 34.937878749175894,
+        "Total_Wealth_MDD_95th": 71.378971048402,
+        "MDD_95th": 71.378971048402,
+        "Tax_Drag": 490.53218830116987
+      }
+    ],
+    "theta_r": [
+      {
+        "param_value": 0.005,
+        "PGF": 100.0,
+        "UGF": 91.60000000000001,
+        "UGapF": 0.41914718877250173,
+        "Shortfall_CVaR": 2289.169072047558,
+        "Wealth_30y_median": 771121.2967763774,
+        "Market_MDD_95th": 40.054767135548225,
+        "Total_Wealth_MDD_95th": 64.83107517005581,
+        "MDD_95th": 64.83107517005581,
+        "Tax_Drag": 591.2966049054954
+      },
+      {
+        "param_value": 0.022,
+        "PGF": 100.0,
+        "UGF": 93.8,
+        "UGapF": 0.27531667828406564,
+        "Shortfall_CVaR": 1616.083719546263,
+        "Wealth_30y_median": 769095.9283414823,
+        "Market_MDD_95th": 40.14070391494463,
+        "Total_Wealth_MDD_95th": 63.821161802210234,
+        "MDD_95th": 63.821161802210234,
+        "Tax_Drag": 617.3564206129738
+      },
+      {
+        "param_value": 0.038,
+        "PGF": 100.0,
+        "UGF": 97.0,
+        "UGapF": 0.15075500947560663,
+        "Shortfall_CVaR": 905.0382525651705,
+        "Wealth_30y_median": 812090.706617076,
+        "Market_MDD_95th": 39.47502127005653,
+        "Total_Wealth_MDD_95th": 63.42490298237058,
+        "MDD_95th": 63.42490298237058,
+        "Tax_Drag": 615.7665368364901
+      }
+    ],
+    "spread_mean": [
+      {
+        "param_value": 0.005,
+        "PGF": 100.0,
+        "UGF": 92.0,
+        "UGapF": 0.3668423439985099,
+        "Shortfall_CVaR": 2004.1668370103303,
+        "Wealth_30y_median": 753673.0285503956,
+        "Market_MDD_95th": 40.18344952150879,
+        "Total_Wealth_MDD_95th": 64.35406561979681,
+        "MDD_95th": 64.35406561979681,
+        "Tax_Drag": 612.4849844759696
+      },
+      {
+        "param_value": 0.011,
+        "PGF": 100.0,
+        "UGF": 93.8,
+        "UGapF": 0.27531667828406564,
+        "Shortfall_CVaR": 1616.083719546263,
+        "Wealth_30y_median": 769095.9283414823,
+        "Market_MDD_95th": 40.14070391494463,
+        "Total_Wealth_MDD_95th": 63.821161802210234,
+        "MDD_95th": 63.821161802210234,
+        "Tax_Drag": 617.3564206129738
+      },
+      {
+        "param_value": 0.02,
+        "PGF": 100.0,
+        "UGF": 95.8,
+        "UGapF": 0.18291869864739616,
+        "Shortfall_CVaR": 1101.064623912228,
+        "Wealth_30y_median": 791944.153278672,
+        "Market_MDD_95th": 39.68545124770132,
+        "Total_Wealth_MDD_95th": 63.49072235258378,
+        "MDD_95th": 63.49072235258378,
+        "Tax_Drag": 611.0119245673087
+      },
+      {
+        "param_value": 0.035,
+        "PGF": 100.0,
+        "UGF": 97.6,
+        "UGapF": 0.08313159348220159,
+        "Shortfall_CVaR": 501.6484972739217,
+        "Wealth_30y_median": 828901.0139587466,
+        "Market_MDD_95th": 39.35023723913063,
+        "Total_Wealth_MDD_95th": 63.45380476765838,
+        "MDD_95th": 63.45380476765838,
+        "Tax_Drag": 615.3593522859577
+      }
+    ],
+    "lambda_0": [
+      {
+        "param_value": 0.1,
+        "PGF": 100.0,
+        "UGF": 99.2,
+        "UGapF": 0.03985658563901292,
+        "Shortfall_CVaR": 242.17778265602158,
+        "Wealth_30y_median": 793223.3566580252,
+        "Market_MDD_95th": 40.977462139237616,
+        "Total_Wealth_MDD_95th": 54.47181842548902,
+        "MDD_95th": 54.47181842548902,
+        "Tax_Drag": 678.2843520571063
+      },
+      {
+        "param_value": 0.2,
+        "PGF": 100.0,
+        "UGF": 93.8,
+        "UGapF": 0.27531667828406564,
+        "Shortfall_CVaR": 1616.083719546263,
+        "Wealth_30y_median": 769095.9283414823,
+        "Market_MDD_95th": 40.14070391494463,
+        "Total_Wealth_MDD_95th": 63.821161802210234,
+        "MDD_95th": 63.821161802210234,
+        "Tax_Drag": 617.3564206129738
+      },
+      {
+        "param_value": 0.4,
+        "PGF": 99.8,
+        "UGF": 72.6,
+        "UGapF": 2.17702229217022,
+        "Shortfall_CVaR": 5748.1046788123695,
+        "Wealth_30y_median": 735123.6946203371,
+        "Market_MDD_95th": 39.41298852634006,
+        "Total_Wealth_MDD_95th": 73.75112035080305,
+        "MDD_95th": 73.75112035080305,
+        "Tax_Drag": 545.6126282491045
+      }
+    ],
+    "mu_D": [
+      {
+        "param_value": 1200.0,
+        "PGF": 100.0,
+        "UGF": 99.0,
+        "UGapF": 0.02029169551511592,
+        "Shortfall_CVaR": 121.45605158220918,
+        "Wealth_30y_median": 788658.1002435441,
+        "Market_MDD_95th": 40.89646371152746,
+        "Total_Wealth_MDD_95th": 54.691707191472915,
+        "MDD_95th": 54.691707191472915,
+        "Tax_Drag": 643.2027661256775
+      },
+      {
+        "param_value": 1800.0000000000005,
+        "PGF": 100.0,
+        "UGF": 93.8,
+        "UGapF": 0.27531667828406564,
+        "Shortfall_CVaR": 1616.083719546263,
+        "Wealth_30y_median": 769095.9283414823,
+        "Market_MDD_95th": 40.14070391494463,
+        "Total_Wealth_MDD_95th": 63.821161802210234,
+        "MDD_95th": 63.821161802210234,
+        "Tax_Drag": 617.3564206129738
+      },
+      {
+        "param_value": 2999.9999999999977,
+        "PGF": 99.6,
+        "UGF": 78.2,
+        "UGapF": 2.1167414519877603,
+        "Shortfall_CVaR": 7321.456364373756,
+        "Wealth_30y_median": 740567.5256575758,
+        "Market_MDD_95th": 39.60960014257682,
+        "Total_Wealth_MDD_95th": 82.06172470112611,
+        "MDD_95th": 82.06172470112611,
+        "Tax_Drag": 563.9472001259263
+      }
+    ],
+    "gamma_dual": [
+      {
+        "param_value": 0.0,
+        "PGF": 100.0,
+        "UGF": 97.39999999999999,
+        "UGapF": 0.07533223026733565,
+        "Shortfall_CVaR": 455.4174089426706,
+        "Wealth_30y_median": 785107.0738133809,
+        "Market_MDD_95th": 40.434206603276685,
+        "Total_Wealth_MDD_95th": 58.026850472724,
+        "MDD_95th": 58.026850472724,
+        "Tax_Drag": 665.117698249303
+      },
+      {
+        "param_value": 2.0,
+        "PGF": 100.0,
+        "UGF": 94.0,
+        "UGapF": 0.24830651481909943,
+        "Shortfall_CVaR": 1479.9694762261415,
+        "Wealth_30y_median": 771486.7072265137,
+        "Market_MDD_95th": 40.466305462615196,
+        "Total_Wealth_MDD_95th": 63.821161802210234,
+        "MDD_95th": 63.821161802210234,
+        "Tax_Drag": 625.6917368198842
+      },
+      {
+        "param_value": 4.0,
+        "PGF": 100.0,
+        "UGF": 91.4,
+        "UGapF": 0.504353681983099,
+        "Shortfall_CVaR": 2582.42370996229,
+        "Wealth_30y_median": 764432.57009033,
+        "Market_MDD_95th": 39.47129148076704,
+        "Total_Wealth_MDD_95th": 66.53356349008934,
+        "MDD_95th": 66.53356349008934,
+        "Tax_Drag": 599.13671081346
+      },
+      {
+        "param_value": 6.0,
+        "PGF": 100.0,
+        "UGF": 87.2,
+        "UGapF": 0.8599726606208893,
+        "Shortfall_CVaR": 3755.6451753282104,
+        "Wealth_30y_median": 753922.7554213866,
+        "Market_MDD_95th": 39.36656060939197,
+        "Total_Wealth_MDD_95th": 66.86316527480355,
+        "MDD_95th": 66.86316527480355,
+        "Tax_Drag": 588.8360023045608
+      }
+    ],
+    "g_Y": [
+      {
+        "param_value": 0.015,
+        "PGF": 100.0,
+        "UGF": 91.60000000000001,
+        "UGapF": 0.44686243669829473,
+        "Shortfall_CVaR": 2335.281017726749,
+        "Wealth_30y_median": 722629.7318156996,
+        "Market_MDD_95th": 39.96715077823749,
+        "Total_Wealth_MDD_95th": 64.97290671092956,
+        "MDD_95th": 64.97290671092956,
+        "Tax_Drag": 658.3025221221505
+      },
+      {
+        "param_value": 0.025,
+        "PGF": 100.0,
+        "UGF": 97.8,
+        "UGapF": 0.07104588863953303,
+        "Shortfall_CVaR": 427.45844899092293,
+        "Wealth_30y_median": 887761.222622213,
+        "Market_MDD_95th": 41.49687485901361,
+        "Total_Wealth_MDD_95th": 62.076561242862304,
+        "MDD_95th": 62.076561242862304,
+        "Tax_Drag": 519.1580578222768
+      },
+      {
+        "param_value": 0.0325,
+        "PGF": 100.0,
+        "UGF": 99.6,
+        "UGapF": 0.007956082286516028,
+        "Shortfall_CVaR": 46.349658658074624,
+        "Wealth_30y_median": 1027343.1379063046,
+        "Market_MDD_95th": 41.81635498509984,
+        "Total_Wealth_MDD_95th": 61.595425104970616,
+        "MDD_95th": 61.595425104970616,
+        "Tax_Drag": 412.2993236340813
+      },
+      {
+        "param_value": 0.04,
+        "PGF": 100.0,
+        "UGF": 100.0,
+        "UGapF": 0.0,
+        "Shortfall_CVaR": 0.0,
+        "Wealth_30y_median": 1191353.6306364606,
+        "Market_MDD_95th": 42.9554871658611,
+        "Total_Wealth_MDD_95th": 58.726985198597234,
+        "MDD_95th": 58.726985198597234,
+        "Tax_Drag": 314.35949925958425
+      }
+    ],
+    "smart_split": [
+      {
+        "param_value": 0.3,
+        "PGF": 100.0,
+        "UGF": 98.2,
+        "UGapF": 0.0626147251462199,
+        "Shortfall_CVaR": 376.10455644614353,
+        "Wealth_30y_median": 851527.5083657368,
+        "Market_MDD_95th": 41.52283272113888,
+        "Total_Wealth_MDD_95th": 62.10623032853007,
+        "MDD_95th": 62.10623032853007,
+        "Tax_Drag": 547.1122458406539
+      },
+      {
+        "param_value": 0.5,
+        "PGF": 100.0,
+        "UGF": 93.8,
+        "UGapF": 0.27531667828406564,
+        "Shortfall_CVaR": 1616.083719546263,
+        "Wealth_30y_median": 769095.9283414823,
+        "Market_MDD_95th": 40.14070391494463,
+        "Total_Wealth_MDD_95th": 63.821161802210234,
+        "MDD_95th": 63.821161802210234,
+        "Tax_Drag": 617.3564206129738
+      },
+      {
+        "param_value": 0.7,
+        "PGF": 100.0,
+        "UGF": 87.2,
+        "UGapF": 0.867699862150685,
+        "Shortfall_CVaR": 3538.730724874089,
+        "Wealth_30y_median": 688683.7136991099,
+        "Market_MDD_95th": 38.79732988368054,
+        "Total_Wealth_MDD_95th": 65.87120166063515,
+        "MDD_95th": 65.87120166063515,
+        "Tax_Drag": 644.303756269732
+      }
+    ]
+  },
+  "historical_stress_tests": [
+    {
+      "Crisis_ID": "GFC_2008",
+      "Description": "Global Financial Crisis (Lehman Collapse & Credit Freeze)",
+      "Cum_Equity_Return_pct": -36.815155217414286,
+      "Cum_Inflation_pct": 2.631534224329579,
+      "Rate_Change_bps": -400.0,
+      "Cum_Bond_Return_pct": 38.1794436808254,
+      "Number_of_Shocks": 4,
+      "Total_Shock_EUR": 11500.0,
+      "Target_at_H_EUR": 25657.883556082394,
+      "S_DFP_M5": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 2115.7228787730674,
+        "Forced_Liquidations_EUR": 0.0,
+        "Market_MDD_pct": 5.9812331232638964,
+        "Total_Wealth_MDD_pct": 75.67933426585974,
+        "MDD_pct": 75.67933426585974
+      },
+      "Fair_M2": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 32596.279289427763,
+        "Market_MDD_pct": 26.309830123804957,
+        "Total_Wealth_MDD_pct": 83.88329051069826,
+        "MDD_pct": 83.88329051069826
+      },
+      "Naive_M0": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 37157.88355608239,
+        "Market_MDD_pct": 26.309830123804957,
+        "Total_Wealth_MDD_pct": 84.68897096688535,
+        "MDD_pct": 84.68897096688535
+      }
+    },
+    {
+      "Crisis_ID": "Sovereign_2011",
+      "Description": "European Sovereign Debt Crisis (BTP-Bund Spread Widening > 500 bps)",
+      "Cum_Equity_Return_pct": -11.091143779453006,
+      "Cum_Inflation_pct": 5.016769317893921,
+      "Rate_Change_bps": -115.0,
+      "Cum_Bond_Return_pct": 20.016939213980088,
+      "Number_of_Shocks": 3,
+      "Total_Shock_EUR": 5800.0,
+      "Target_at_H_EUR": 26254.19232947348,
+      "S_DFP_M5": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 584.2493351998346,
+        "Forced_Liquidations_EUR": 0.0,
+        "Market_MDD_pct": 4.192944577346635,
+        "Total_Wealth_MDD_pct": 65.93179322657036,
+        "MDD_pct": 65.93179322657036
+      },
+      "Fair_M2": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 27530.377005220394,
+        "Market_MDD_pct": 13.193926189984362,
+        "Total_Wealth_MDD_pct": 65.81793139713078,
+        "MDD_pct": 65.81793139713078
+      },
+      "Naive_M0": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 32054.19232947348,
+        "Market_MDD_pct": 13.193926189984362,
+        "Total_Wealth_MDD_pct": 66.50314451577745,
+        "MDD_pct": 66.50314451577745
+      }
+    },
+    {
+      "Crisis_ID": "Covid_2020",
+      "Description": "Covid-19 Liquidity Shock (Rapid Crash & V-Shaped Recovery)",
+      "Cum_Equity_Return_pct": 14.442770983524866,
+      "Cum_Inflation_pct": 1.105597094897126,
+      "Rate_Change_bps": 0.0,
+      "Cum_Bond_Return_pct": 2.837890048189129,
+      "Number_of_Shocks": 2,
+      "Total_Shock_EUR": 5500.0,
+      "Target_at_H_EUR": 25276.39927372428,
+      "S_DFP_M5": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 452.2778604767227,
+        "Forced_Liquidations_EUR": 0.0,
+        "Market_MDD_pct": 9.661687961774469,
+        "Total_Wealth_MDD_pct": 60.86431908394667,
+        "MDD_pct": 60.86431908394667
+      },
+      "Fair_M2": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 26275.670035278526,
+        "Market_MDD_pct": 20.929004888888887,
+        "Total_Wealth_MDD_pct": 59.041882750187355,
+        "MDD_pct": 59.041882750187355
+      },
+      "Naive_M0": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 30776.39927372428,
+        "Market_MDD_pct": 20.929004888888887,
+        "Total_Wealth_MDD_pct": 59.91612196947853,
+        "MDD_pct": 59.91612196947853
+      }
+    },
+    {
+      "Crisis_ID": "Stagflation_2022",
+      "Description": "Stagflation and Rate Hikes (Simultaneous Equity & Bond Drawdown)",
+      "Cum_Equity_Return_pct": -8.16428933157216,
+      "Cum_Inflation_pct": 17.403086295436985,
+      "Rate_Change_bps": 450.0,
+      "Cum_Bond_Return_pct": -20.10766258099571,
+      "Number_of_Shocks": 3,
+      "Total_Shock_EUR": 5500.0,
+      "Target_at_H_EUR": 29350.771573859245,
+      "S_DFP_M5": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 7060.680325051548,
+        "Forced_Liquidations_EUR": 2957.2692856857093,
+        "Market_MDD_pct": 10.648010308081169,
+        "Total_Wealth_MDD_pct": 79.435591561045,
+        "MDD_pct": 79.435591561045
+      },
+      "Fair_M2": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 30346.51445248455,
+        "Market_MDD_pct": 15.070926494929736,
+        "Total_Wealth_MDD_pct": 83.32590312655186,
+        "MDD_pct": 83.32590312655186
+      },
+      "Naive_M0": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 34850.771573859245,
+        "Market_MDD_pct": 15.070926494929736,
+        "Total_Wealth_MDD_pct": 84.07102417788799,
+        "MDD_pct": 84.07102417788799
+      }
+    }
+  ],
+  "gfc_month_by_month_table": [
+    {
+      "month": 1,
+      "macro": {
+        "r_eq_pct": -2.0,
+        "r_short_pct": 4.25,
+        "inflation_pct": 3.2,
+        "r_bond_bench_pct": 0.4192708333333333,
+        "r_v3a_price_pct": -0.0,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 4513.9453125,
+        "v3a_bonds": 20000.0,
+        "v3a_cash": 346.6666666666667,
+        "v4_eq": 8040.0,
+        "w_fin": 32900.61197916667,
+        "mkt_idx": 0.9959523809523809,
+        "mkt_dd_pct": 0.40476190476190776,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 4513.9453125,
+        "equity": 16764.0,
+        "bonds": 11446.958333333332,
+        "w_fin": 32724.903645833332,
+        "mkt_idx": 0.9896770833333334,
+        "mkt_dd_pct": 1.0322916666666626,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 19410.0,
+        "bonds": 13254.505208333332,
+        "w_fin": 32664.505208333332,
+        "mkt_idx": 0.9896770833333334,
+        "mkt_dd_pct": 1.0322916666666626,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 2,
+      "macro": {
+        "r_eq_pct": -1.5,
+        "r_short_pct": 4.076086956521739,
+        "inflation_pct": 3.0347826086956524,
+        "r_bond_bench_pct": 1.5370244565217406,
+        "r_v3a_price_pct": 1.083333333333335,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 4527.36142034116,
+        "v3a_bonds": 20216.666666666664,
+        "v3a_cash": 694.8692330917875,
+        "v4_eq": 8119.4,
+        "w_fin": 33558.29732009961,
+        "mkt_idx": 1.0010221242895636,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 4527.36142034116,
+        "equity": 16812.54,
+        "bonds": 11822.900882444517,
+        "w_fin": 33162.802302785676,
+        "mkt_idx": 0.9868546211079031,
+        "mkt_dd_pct": 1.3145378892096882,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 19418.85,
+        "bonds": 13658.230194976362,
+        "w_fin": 33077.08019497636,
+        "mkt_idx": 0.9868546211079031,
+        "mkt_dd_pct": 1.3145378892096882,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 3,
+      "macro": {
+        "r_eq_pct": -3.0,
+        "r_short_pct": 3.902173913043479,
+        "inflation_pct": 2.8695652173913047,
+        "r_bond_bench_pct": 1.5243432971014466,
+        "r_v3a_price_pct": 1.0362318840579683,
+        "shock_eur": 1800.0
+      },
+      "S_DFP_M5": {
+        "v1": 2740.2432809042457,
+        "v3a_bonds": 20426.158212560385,
+        "v3a_cash": 1044.50740477114,
+        "v4_eq": 8075.817999999999,
+        "w_fin": 32286.72689823577,
+        "mkt_idx": 1.0014842610943266,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 3.7891386733207106,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 2740.2432809042457,
+        "equity": 16608.163800000002,
+        "bonds": 12203.122479569009,
+        "w_fin": 31551.529560473253,
+        "mkt_idx": 0.9751084588355585,
+        "mkt_dd_pct": 2.4891541164441477,
+        "tot_dd_pct": 4.858674871927444,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 18098.85987484617,
+        "bonds": 13303.853136609996,
+        "w_fin": 31402.713011456166,
+        "mkt_idx": 0.9751084588355585,
+        "mkt_dd_pct": 2.4891541164441477,
+        "tot_dd_pct": 5.062016277284638,
+        "forced_liq_month": 1800.0
+      }
+    },
+    {
+      "month": 4,
+      "macro": {
+        "r_eq_pct": -4.0,
+        "r_short_pct": 3.7282608695652177,
+        "inflation_pct": 2.7043478260869565,
+        "r_bond_bench_pct": 1.511662137681161,
+        "r_v3a_price_pct": 0.9891304347826101,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 3247.6926967980985,
+        "v3a_bonds": 20628.19956009767,
+        "v3a_cash": 1095.4793883901443,
+        "v4_eq": 7752.785279999999,
+        "w_fin": 32724.15692528591,
+        "mkt_idx": 0.9989076264970825,
+        "mkt_dd_pct": 0.2572815866750226,
+        "tot_dd_pct": 2.4856457610383473,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 2747.6926967980985,
+        "equity": 16243.837248000002,
+        "bonds": 12587.592461707512,
+        "w_fin": 31579.122406505616,
+        "mkt_idx": 0.9576019939729224,
+        "mkt_dd_pct": 4.239800602707755,
+        "tot_dd_pct": 4.7754706668653,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 17674.90547985232,
+        "bonds": 13704.962447328839,
+        "w_fin": 31379.86792718116,
+        "mkt_idx": 0.9576019939729224,
+        "mkt_dd_pct": 4.239800602707755,
+        "tot_dd_pct": 5.1310824830692585,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 5,
+      "macro": {
+        "r_eq_pct": -2.5,
+        "r_short_pct": 3.5543478260869565,
+        "inflation_pct": 2.5391304347826087,
+        "r_bond_bench_pct": 1.4989809782608712,
+        "r_v3a_price_pct": 0.9420289855072478,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 3756.1097807914985,
+        "v3a_bonds": 20822.523179142067,
+        "v3a_cash": 1146.9044428371562,
+        "v4_eq": 7558.965647999999,
+        "w_fin": 33284.50305077072,
+        "mkt_idx": 1.0006194530522978,
+        "mkt_dd_pct": 0.08635263434732761,
+        "tot_dd_pct": 0.8158765229274766,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 2754.8139248132375,
+        "equity": 16137.741316800002,
+        "bonds": 12976.278078329507,
+        "w_fin": 31868.83331994275,
+        "mkt_idx": 0.948979672758169,
+        "mkt_dd_pct": 5.102032724183103,
+        "tot_dd_pct": 3.901868638930529,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 17533.032842856013,
+        "bonds": 14110.397227492092,
+        "w_fin": 31643.430070348106,
+        "mkt_idx": 0.948979672758169,
+        "mkt_dd_pct": 5.102032724183103,
+        "tot_dd_pct": 4.334270486323018,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 6,
+      "macro": {
+        "r_eq_pct": -5.0,
+        "r_short_pct": 3.3804347826086962,
+        "inflation_pct": 2.373913043478261,
+        "r_bond_bench_pct": 1.486299818840577,
+        "r_v3a_price_pct": 0.8949275362318817,
+        "shock_eur": 3200.0
+      },
+      "S_DFP_M5": {
+        "v1": 1065.368217151081,
+        "v3a_bonds": 21008.869672810477,
+        "v3a_cash": 1198.752143917075,
+        "v4_eq": 7181.017365599999,
+        "w_fin": 30454.00739947863,
+        "mkt_idx": 0.9955772759550438,
+        "mkt_dd_pct": 0.589823062504078,
+        "tot_dd_pct": 9.250439290797038,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 15394.561143615229,
+        "bonds": 13167.041849899373,
+        "w_fin": 28561.6029935146,
+        "mkt_idx": 0.9261521558382393,
+        "mkt_dd_pct": 7.384784416176071,
+        "tot_dd_pct": 13.874579317094007,
+        "forced_liq_month": 438.3957333453691
+      },
+      "Naive_M0": {
+        "equity": 15232.54221891656,
+        "bonds": 13043.959017718646,
+        "w_fin": 28276.501236635206,
+        "mkt_idx": 0.9261521558382393,
+        "mkt_dd_pct": 7.384784416176071,
+        "tot_dd_pct": 14.513309306757533,
+        "forced_liq_month": 3200.0
+      }
+    },
+    {
+      "month": 7,
+      "macro": {
+        "r_eq_pct": -6.0,
+        "r_short_pct": 3.206521739130435,
+        "inflation_pct": 2.208695652173913,
+        "r_bond_bench_pct": 1.4736186594202914,
+        "r_v3a_price_pct": 0.8478260869565231,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 1567.8591426135094,
+        "v3a_bonds": 21186.988350471263,
+        "v3a_cash": 1250.9912389916221,
+        "v4_eq": 6750.156323663999,
+        "w_fin": 30755.995055740394,
+        "mkt_idx": 0.9883824736710032,
+        "mkt_dd_pct": 1.3082369770850995,
+        "tot_dd_pct": 8.350549605151723,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 14770.887474998313,
+        "bonds": 13561.073835493167,
+        "w_fin": 28331.961310491482,
+        "mkt_idx": 0.898269858621285,
+        "mkt_dd_pct": 10.173014137871505,
+        "tot_dd_pct": 14.5670469829035,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 14618.589685781566,
+        "bonds": 13436.177231730882,
+        "w_fin": 28054.766917512447,
+        "mkt_idx": 0.898269858621285,
+        "mkt_dd_pct": 10.173014137871505,
+        "tot_dd_pct": 15.183665691951518,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 8,
+      "macro": {
+        "r_eq_pct": -8.0,
+        "r_short_pct": 3.0326086956521743,
+        "inflation_pct": 2.0434782608695654,
+        "r_bond_bench_pct": 1.4609374999999993,
+        "r_v3a_price_pct": 0.800724637681159,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 2071.326113747482,
+        "v3a_bonds": 21356.63778617612,
+        "v3a_cash": 1303.5896821975805,
+        "v4_eq": 6210.143817770879,
+        "w_fin": 30941.697399892066,
+        "mkt_idx": 0.977028471942976,
+        "mkt_dd_pct": 2.441954417199492,
+        "tot_dd_pct": 7.79717723831103,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 13889.216476998448,
+        "bonds": 13959.192648558575,
+        "w_fin": 27848.409125557024,
+        "mkt_idx": 0.8604021698937814,
+        "mkt_dd_pct": 13.959783010621862,
+        "tot_dd_pct": 16.025163159333623,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 13749.102510919041,
+        "bonds": 13832.4713834757,
+        "w_fin": 27581.573894394744,
+        "mkt_idx": 0.8604021698937814,
+        "mkt_dd_pct": 13.959783010621862,
+        "tot_dd_pct": 16.614242454859294,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 9,
+      "macro": {
+        "r_eq_pct": -12.0,
+        "r_short_pct": 2.8586956521739135,
+        "inflation_pct": 1.8782608695652174,
+        "r_bond_bench_pct": 1.4482563405797095,
+        "r_v3a_price_pct": 0.7536231884057966,
+        "shock_eur": 4500.0
+      },
+      "S_DFP_M5": {
+        "v1": 0.0,
+        "v3a_bonds": 20949.74475406123,
+        "v3a_cash": 0.0,
+        "v4_eq": 5464.926559638373,
+        "w_fin": 26414.671313699604,
+        "mkt_idx": 0.9580868445718048,
+        "mkt_dd_pct": 4.333309888974317,
+        "tot_dd_pct": 21.28721233458219,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 10426.409701945919,
+        "bonds": 11957.458338997776,
+        "w_fin": 22383.868040943693,
+        "mkt_idx": 0.8034375452534179,
+        "mkt_dd_pct": 19.656245474658206,
+        "tot_dd_pct": 32.50308632975975,
+        "forced_liq_month": 4500.0
+      },
+      "Naive_M0": {
+        "equity": 10304.120753284993,
+        "bonds": 11827.890483669524,
+        "w_fin": 22132.011236954517,
+        "mkt_idx": 0.8034375452534179,
+        "mkt_dd_pct": 19.656245474658206,
+        "tot_dd_pct": 33.08958618325733,
+        "forced_liq_month": 4500.0
+      }
+    },
+    {
+      "month": 10,
+      "macro": {
+        "r_eq_pct": -9.0,
+        "r_short_pct": 2.6847826086956523,
+        "inflation_pct": 1.71304347826087,
+        "r_bond_bench_pct": 1.435575181159422,
+        "r_v3a_price_pct": 0.7065217391304357,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 500.0,
+        "v3a_bonds": 21097.75925504101,
+        "v3a_cash": 49.22810492842902,
+        "v4_eq": 4973.08316927092,
+        "w_fin": 26620.070529240358,
+        "mkt_idx": 0.947388849341196,
+        "mkt_dd_pct": 5.40152390353297,
+        "tot_dd_pct": 20.67514547796688,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 9788.032828770787,
+        "bonds": 12329.116643209905,
+        "w_fin": 22117.149471980694,
+        "mkt_idx": 0.7646654978080433,
+        "mkt_dd_pct": 23.53345021919567,
+        "tot_dd_pct": 33.307356627932336,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 9676.749885489344,
+        "bonds": 12197.6887439078,
+        "w_fin": 21874.438629397144,
+        "mkt_idx": 0.7646654978080433,
+        "mkt_dd_pct": 23.53345021919567,
+        "tot_dd_pct": 33.86829036766262,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 11,
+      "macro": {
+        "r_eq_pct": -7.000000000000001,
+        "r_short_pct": 2.5108695652173916,
+        "inflation_pct": 1.547826086956522,
+        "r_bond_bench_pct": 1.42289402173913,
+        "r_v3a_price_pct": 0.6594202898550722,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 1000.9154211956521,
+        "v3a_bonds": 21236.882160273526,
+        "v3a_cash": 98.87095887041379,
+        "v4_eq": 4624.967347421955,
+        "w_fin": 26961.63588776155,
+        "mkt_idx": 0.9415831527454781,
+        "mkt_dd_pct": 5.9812331232638964,
+        "tot_dd_pct": 19.657318633943383,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 9402.87053075683,
+        "bonds": 12704.546906859385,
+        "w_fin": 22107.417437616215,
+        "mkt_idx": 0.7369016987619504,
+        "mkt_dd_pct": 26.309830123804957,
+        "tot_dd_pct": 33.336702864343906,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 9299.377393505089,
+        "bonds": 12571.248927835211,
+        "w_fin": 21870.6263213403,
+        "mkt_idx": 0.7369016987619504,
+        "mkt_dd_pct": 26.309830123804957,
+        "tot_dd_pct": 33.87981589541287,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 12,
+      "macro": {
+        "r_eq_pct": 2.0,
+        "r_short_pct": 2.336956521739131,
+        "inflation_pct": 1.3826086956521741,
+        "r_bond_bench_pct": 1.41021286231884,
+        "r_v3a_price_pct": 0.6123188405797098,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 1502.6210118986633,
+        "v3a_bonds": 21366.91959089259,
+        "v3a_cash": 148.89558374135063,
+        "v4_eq": 4717.466694370394,
+        "w_fin": 27735.902880903,
+        "mkt_idx": 0.9514894392861407,
+        "mkt_dd_pct": 4.9920726416165895,
+        "tot_dd_pct": 17.35008896208007,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 9890.927941371967,
+        "bonds": 13083.708061439245,
+        "w_fin": 22974.63600281121,
+        "mkt_idx": 0.7499012721625287,
+        "mkt_dd_pct": 25.009872783747134,
+        "tot_dd_pct": 30.721668835322337,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 9785.36494137519,
+        "bonds": 12948.530297169662,
+        "w_fin": 22733.89523854485,
+        "mkt_idx": 0.7499012721625287,
+        "mkt_dd_pct": 25.009872783747134,
+        "tot_dd_pct": 31.26994551956373,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 13,
+      "macro": {
+        "r_eq_pct": 4.0,
+        "r_short_pct": 2.1630434782608696,
+        "inflation_pct": 1.2173913043478264,
+        "r_bond_bench_pct": 1.3975317028985523,
+        "r_v3a_price_pct": 0.5652173913043487,
+        "shock_eur": 2000.0
+      },
+      "S_DFP_M5": {
+        "v1": 4.990974613308936,
+        "v3a_bonds": 21487.68913640633,
+        "v3a_cash": 199.26836603353573,
+        "v4_eq": 4906.165362145211,
+        "w_fin": 26598.113839198384,
+        "mkt_idx": 0.9645966417761044,
+        "mkt_dd_pct": 3.683294960413555,
+        "tot_dd_pct": 20.740573976417014,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 9706.299701369095,
+        "bonds": 12346.822387170303,
+        "w_fin": 22053.1220885394,
+        "mkt_idx": 0.7720909459019937,
+        "mkt_dd_pct": 22.790905409800633,
+        "tot_dd_pct": 33.50042651043716,
+        "forced_liq_month": 2000.0
+      },
+      "Naive_M0": {
+        "equity": 9596.609760891217,
+        "bonds": 12209.659891271014,
+        "w_fin": 21806.26965216223,
+        "mkt_idx": 0.7720909459019937,
+        "mkt_dd_pct": 22.790905409800633,
+        "tot_dd_pct": 34.07438164546913,
+        "forced_liq_month": 2000.0
+      }
+    },
+    {
+      "month": 14,
+      "macro": {
+        "r_eq_pct": -5.0,
+        "r_short_pct": 1.9891304347826089,
+        "inflation_pct": 1.0521739130434786,
+        "r_bond_bench_pct": 1.3848505434782603,
+        "r_v3a_price_pct": 0.5181159420289851,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 504.9982135608629,
+        "v3a_bonds": 21599.020279395685,
+        "v3a_cash": 249.9551003730597,
+        "v4_eq": 4660.8570940379495,
+        "w_fin": 27014.830687367557,
+        "mkt_idx": 0.9615326332529532,
+        "mkt_dd_pct": 3.9892417078744775,
+        "tot_dd_pct": 19.498804037393374,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 9520.98471630064,
+        "bonds": 12717.807424101326,
+        "w_fin": 22238.792140401965,
+        "mkt_idx": 0.753205139789122,
+        "mkt_dd_pct": 24.679486021087804,
+        "tot_dd_pct": 32.9405520759206,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 9416.779272846656,
+        "bonds": 12578.745432632128,
+        "w_fin": 21995.524705478783,
+        "mkt_idx": 0.753205139789122,
+        "mkt_dd_pct": 24.679486021087804,
+        "tot_dd_pct": 33.50221792303363,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 15,
+      "macro": {
+        "r_eq_pct": -4.0,
+        "r_short_pct": 1.8152173913043481,
+        "inflation_pct": 0.8869565217391305,
+        "r_bond_bench_pct": 1.3721693840579703,
+        "r_v3a_price_pct": 0.47101449275362295,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 1005.6666271836581,
+        "v3a_bonds": 21700.754795204433,
+        "v3a_cash": 300.9210344698593,
+        "v4_eq": 4474.422810276431,
+        "w_fin": 27481.765267134382,
+        "mkt_idx": 0.9602766279865032,
+        "mkt_dd_pct": 4.114656086836124,
+        "tot_dd_pct": 18.107390833937558,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 9440.145327648614,
+        "bonds": 13092.317283898295,
+        "w_fin": 22532.462611546907,
+        "mkt_idx": 0.739262316565118,
+        "mkt_dd_pct": 26.0737683434882,
+        "tot_dd_pct": 32.05501029189509,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 9340.108101932788,
+        "bonds": 12951.347126357297,
+        "w_fin": 22291.455228290084,
+        "mkt_idx": 0.739262316565118,
+        "mkt_dd_pct": 26.0737683434882,
+        "tot_dd_pct": 32.60754849917002,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 16,
+      "macro": {
+        "r_eq_pct": 3.0,
+        "r_short_pct": 1.6413043478260871,
+        "inflation_pct": 0.7217391304347829,
+        "r_bond_bench_pct": 1.3594882246376827,
+        "r_v3a_price_pct": 0.42391304347826153,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 1506.870193335077,
+        "v3a_bonds": 21792.74712531454,
+        "v3a_cash": 352.1309153680509,
+        "v4_eq": 4608.655494584724,
+        "w_fin": 28260.403728602396,
+        "mkt_idx": 0.9704336666834147,
+        "mkt_dd_pct": 3.100457552571303,
+        "tot_dd_pct": 15.787134671829921,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 10023.349687478072,
+        "bonds": 13470.305795705095,
+        "w_fin": 23493.655483183167,
+        "mkt_idx": 0.7565891119204446,
+        "mkt_dd_pct": 24.341088807955536,
+        "tot_dd_pct": 29.156603628729833,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 9920.311344990772,
+        "bonds": 13327.419165472074,
+        "w_fin": 23247.730510462847,
+        "mkt_idx": 0.7565891119204446,
+        "mkt_dd_pct": 24.341088807955536,
+        "tot_dd_pct": 29.716497425327056,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 17,
+      "macro": {
+        "r_eq_pct": 2.0,
+        "r_short_pct": 1.4673913043478264,
+        "inflation_pct": 0.5565217391304351,
+        "r_bond_bench_pct": 1.3468070652173907,
+        "r_v3a_price_pct": 0.3768115942028983,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 2008.482503494386,
+        "v3a_bonds": 21874.86472317805,
+        "v3a_cash": 403.54903689946866,
+        "v4_eq": 4700.828604476418,
+        "w_fin": 28987.72486804832,
+        "mkt_idx": 0.9787091313083207,
+        "mkt_dd_pct": 2.274137564690177,
+        "tot_dd_pct": 13.619798431530569,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 10523.816681227634,
+        "bonds": 13851.72482586804,
+        "w_fin": 24375.541507095673,
+        "mkt_idx": 0.7697440995090941,
+        "mkt_dd_pct": 23.025590049090596,
+        "tot_dd_pct": 26.497340952853893,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 10418.717571890587,
+        "bonds": 13706.91378840379,
+        "w_fin": 24125.631360294377,
+        "mkt_idx": 0.7697440995090941,
+        "mkt_dd_pct": 23.025590049090596,
+        "tot_dd_pct": 27.062391184217955,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 18,
+      "macro": {
+        "r_eq_pct": 5.0,
+        "r_short_pct": 1.2934782608695654,
+        "inflation_pct": 0.39130434782608736,
+        "r_bond_bench_pct": 1.3341259057971007,
+        "r_v3a_price_pct": 0.3297101449275361,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 2510.3768263265993,
+        "v3a_bonds": 21946.98837135954,
+        "v3a_cash": 455.13928823940864,
+        "v4_eq": 4935.87003470024,
+        "w_fin": 29848.374520625788,
+        "mkt_idx": 0.9919008813428466,
+        "mkt_dd_pct": 0.9569176594955415,
+        "tot_dd_pct": 11.055158025707641,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 11350.007515289017,
+        "bonds": 14236.524275169671,
+        "w_fin": 25586.53179045869,
+        "mkt_idx": 0.796944164670325,
+        "mkt_dd_pct": 20.305583532967496,
+        "tot_dd_pct": 22.845688501090816,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 11239.653450485117,
+        "bonds": 14089.781276140158,
+        "w_fin": 25329.434726625273,
+        "mkt_idx": 0.796944164670325,
+        "mkt_dd_pct": 20.305583532967496,
+        "tot_dd_pct": 23.423002945489053,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 19,
+      "macro": {
+        "r_eq_pct": 3.0,
+        "r_short_pct": 1.1195652173913044,
+        "inflation_pct": 0.2260869565217396,
+        "r_bond_bench_pct": 1.3214447463768133,
+        "r_v3a_price_pct": 0.28260869565217434,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 3012.426171539214,
+        "v3a_bonds": 22009.012468930774,
+        "v3a_cash": 506.86520345996246,
+        "v4_eq": 5083.9461357412465,
+        "w_fin": 30612.249979671196,
+        "mkt_idx": 1.0015424698541922,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 8.778893971667308,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 11990.507740747687,
+        "bonds": 14624.65207727056,
+        "w_fin": 26615.15981801825,
+        "mkt_idx": 0.8155016303526279,
+        "mkt_dd_pct": 18.44983696473721,
+        "tot_dd_pct": 19.743936067240693,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 11876.843053999672,
+        "bonds": 14475.969950589695,
+        "w_fin": 26352.813004589367,
+        "mkt_idx": 0.8155016303526279,
+        "mkt_dd_pct": 18.44983696473721,
+        "tot_dd_pct": 20.329083313128272,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 20,
+      "macro": {
+        "r_eq_pct": 2.0,
+        "r_short_pct": 0.945652173913044,
+        "inflation_pct": 0.06086956521739184,
+        "r_bond_bench_pct": 1.3087635869565188,
+        "r_v3a_price_pct": 0.235507246376811,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 3514.5033539876595,
+        "v3a_bonds": 22060.845288151086,
+        "v3a_cash": 558.6900119730159,
+        "v4_eq": 5185.625058456071,
+        "w_fin": 31319.66371256783,
+        "mkt_idx": 1.009115732971989,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 6.670879592544048,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 12530.31789556264,
+        "bonds": 15016.05419837696,
+        "w_fin": 27546.3720939396,
+        "mkt_idx": 0.8295568452724963,
+        "mkt_dd_pct": 17.04431547275037,
+        "tot_dd_pct": 16.93593369331848,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 12414.379915079666,
+        "bonds": 14865.426174161783,
+        "w_fin": 27279.80608924145,
+        "mkt_idx": 0.8295568452724963,
+        "mkt_dd_pct": 17.04431547275037,
+        "tot_dd_pct": 17.526559392673914,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 21,
+      "macro": {
+        "r_eq_pct": 1.0,
+        "r_short_pct": 0.7717391304347829,
+        "inflation_pct": -0.10434782608695625,
+        "r_bond_bench_pct": 1.2960824275362335,
+        "r_v3a_price_pct": 0.18840579710144953,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 4016.481057981015,
+        "v3a_bonds": 22102.409199563543,
+        "v3a_cash": 610.576689752014,
+        "v4_eq": 5237.481309040632,
+        "w_fin": 31966.948256337204,
+        "mkt_idx": 1.0144821637133459,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 4.742043520811399,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 12955.621074518267,
+        "bonds": 15410.67463815144,
+        "w_fin": 28366.295712669707,
+        "mkt_idx": 0.8388348825433315,
+        "mkt_dd_pct": 16.116511745666852,
+        "tot_dd_pct": 14.463514109340098,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 12838.523714230463,
+        "bonds": 15258.094350583464,
+        "w_fin": 28096.618064813927,
+        "mkt_idx": 0.8388348825433315,
+        "mkt_dd_pct": 16.116511745666852,
+        "tot_dd_pct": 15.057139568560988,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 22,
+      "macro": {
+        "r_eq_pct": 2.0,
+        "r_short_pct": 0.5978260869565217,
+        "inflation_pct": -0.2695652173913037,
+        "r_bond_bench_pct": 1.2834012681159437,
+        "r_v3a_price_pct": 0.14130434782608717,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 4500.0,
+        "v3a_bonds": 22133.64086473684,
+        "v3a_cash": 673.4271522625411,
+        "v4_eq": 5349.523695917168,
+        "w_fin": 32656.59171291655,
+        "mkt_idx": 1.0214415829937447,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 2.6869825920607417,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 13514.733496008632,
+        "bonds": 15808.455431882698,
+        "w_fin": 29323.18892789133,
+        "mkt_idx": 0.8532071481418354,
+        "mkt_dd_pct": 14.67928518581646,
+        "tot_dd_pct": 11.578072744991816,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 13395.294188515072,
+        "bonds": 15653.91692696918,
+        "w_fin": 29049.21111548425,
+        "mkt_idx": 0.8532071481418354,
+        "mkt_dd_pct": 14.67928518581646,
+        "tot_dd_pct": 12.177220769636893,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 23,
+      "macro": {
+        "r_eq_pct": 1.0,
+        "r_short_pct": 0.4239130434782613,
+        "inflation_pct": -0.4347826086956518,
+        "r_bond_bench_pct": 1.2707201086956492,
+        "r_v3a_price_pct": 0.09420289855072439,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 4501.390964673913,
+        "v3a_bonds": 22154.49139598623,
+        "v3a_cash": 1025.3291240485646,
+        "v4_eq": 5603.01893287634,
+        "w_fin": 33284.230417585044,
+        "mkt_idx": 1.0261241723996761,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 0.8166889395500337,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 13949.880830968717,
+        "bonds": 16209.33665392982,
+        "w_fin": 30159.217484898538,
+        "mkt_idx": 0.8626631409507932,
+        "mkt_dd_pct": 13.733685904920678,
+        "tot_dd_pct": 9.057089899893162,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 13829.247130400223,
+        "bonds": 16052.834397158687,
+        "w_fin": 29882.081527558912,
+        "mkt_idx": 0.8626631409507932,
+        "mkt_dd_pct": 13.733685904920678,
+        "tot_dd_pct": 9.65925241461517,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 24,
+      "macro": {
+        "r_eq_pct": 1.0,
+        "r_short_pct": 0.25,
+        "inflation_pct": -0.6,
+        "r_bond_bench_pct": 1.2580389492753652,
+        "r_v3a_price_pct": 0.047101449275362445,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 4502.211530735182,
+        "v3a_bonds": 22164.926482513325,
+        "v3a_cash": 1377.2341947960006,
+        "v4_eq": 5859.049122205103,
+        "w_fin": 33903.421330249614,
+        "mkt_idx": 1.0304922117551967,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 14389.379639278404,
+        "bonds": 16613.256422455426,
+        "w_fin": 31002.63606173383,
+        "mkt_idx": 0.8721801751221792,
+        "mkt_dd_pct": 12.781982487782084,
+        "tot_dd_pct": 6.51382299158233,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 14267.539601704226,
+        "bonds": 16454.785306337617,
+        "w_fin": 30722.324908041843,
+        "mkt_idx": 0.8721801751221792,
+        "mkt_dd_pct": 12.781982487782084,
+        "tot_dd_pct": 7.118993795867606,
+        "forced_liq_month": 0.0
+      }
+    }
+  ],
+  "multi_horizon_analysis": {
+    "description": "Analisi multi-orizzonte dinamica (30, 40, 50, 60, 100 anni) con glidepath a T_retire = T_horizon - 84",
+    "scenarios": [
+      {
+        "horizon_years": 30,
+        "horizon_months": 360,
+        "t_retire_months": 276,
+        "w_fin_median_eur": 490983.33162139857,
+        "w_tot_median_eur": 754638.1609311998,
+        "ugf_pct": 95.26,
+        "zfel_pct": 99.97,
+        "shortfall_cvar_eur": 1293.847855416763,
+        "total_wealth_mdd_95th_pct": 63.46879100392558,
+        "market_mdd_95th_pct": 39.3660044491352,
+        "realization_tax_drag_eur": 615.9075771980878,
+        "note": "Baseline (paper)"
+      },
+      {
+        "horizon_years": 40,
+        "horizon_months": 480,
+        "t_retire_months": 396,
+        "w_fin_median_eur": 1046091.8932544661,
+        "w_tot_median_eur": 1540954.3838916395,
+        "ugf_pct": 95.54,
+        "zfel_pct": 99.92,
+        "shortfall_cvar_eur": 1406.9102852644805,
+        "total_wealth_mdd_95th_pct": 64.65048779115794,
+        "market_mdd_95th_pct": 46.62268581512215,
+        "realization_tax_drag_eur": 1772.2836434981048,
+        "note": "Allocazione azionaria espansa"
+      },
+      {
+        "horizon_years": 50,
+        "horizon_months": 600,
+        "t_retire_months": 516,
+        "w_fin_median_eur": 2055056.4736540737,
+        "w_tot_median_eur": 2947551.304452035,
+        "ugf_pct": 95.44,
+        "zfel_pct": 100.0,
+        "shortfall_cvar_eur": 1284.2854627641843,
+        "total_wealth_mdd_95th_pct": 65.77769631218922,
+        "market_mdd_95th_pct": 51.752774160303616,
+        "realization_tax_drag_eur": 10237.950572272464,
+        "note": "Allocazione azionaria espansa"
+      },
+      {
+        "horizon_years": 60,
+        "horizon_months": 720,
+        "t_retire_months": 636,
+        "w_fin_median_eur": 3864581.52626633,
+        "w_tot_median_eur": 5409733.9518936705,
+        "ugf_pct": 95.36,
+        "zfel_pct": 100.0,
+        "shortfall_cvar_eur": 1456.6823515690637,
+        "total_wealth_mdd_95th_pct": 64.90057559542183,
+        "market_mdd_95th_pct": 55.971381396087885,
+        "realization_tax_drag_eur": 41474.44318930151,
+        "note": "Allocazione azionaria espansa"
+      },
+      {
+        "horizon_years": 100,
+        "horizon_months": 1200,
+        "t_retire_months": 1116,
+        "w_fin_median_eur": 40606456.28758189,
+        "w_tot_median_eur": 52103157.17017472,
+        "ugf_pct": 95.6,
+        "zfel_pct": 99.98,
+        "shortfall_cvar_eur": 1326.9304778502053,
+        "total_wealth_mdd_95th_pct": 67.53277154986715,
+        "market_mdd_95th_pct": 64.8624249799377,
+        "realization_tax_drag_eur": 2064358.4261655365,
+        "note": "Rischio di coda dominante"
+      }
+    ]
+  }
+}

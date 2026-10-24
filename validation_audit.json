@@ -1,0 +1,1374 @@
+{
+  "audit_metadata": {
+    "version": "2.1.0",
+    "date": "2026-10-20",
+    "status": "VALIDATED_EMPIRICAL",
+    "reviewer": "Senior Quantitative Researcher"
+  },
+  "point_1_m3_vs_m5_audit": {
+    "max_absolute_diff_at_month_96_eur": 0.0,
+    "marginal_medians_diff_w_tot_eur": 884.3899606911,
+    "marginal_medians_diff_w_fin_eur": 1230.4798171430593,
+    "paired_differences_median_w_tot_eur": 587.0014499030076,
+    "paired_differences_median_w_fin_eur": 587.0014499030367,
+    "hodges_lehmann_pseudomedian_w_tot_eur": 775.8096987017052,
+    "hodges_lehmann_95ci_w_tot_eur": [
+      690.756982273655,
+      864.7563714121934
+    ],
+    "hodges_lehmann_pseudomedian_w_fin_eur": 775.8096987017052,
+    "hodges_lehmann_95ci_w_fin_eur": [
+      690.756982273655,
+      864.7563714121934
+    ],
+    "cliffs_delta_marginal": 0.00277575,
+    "paired_sign_effect_size": 0.4021,
+    "rank_biserial_correlation": 0.48745077301259404,
+    "wilcoxon_p_value": 0.0,
+    "pgf_m3": 100.0,
+    "pgf_m5": 100.0,
+    "ugf_m3": 95.26,
+    "ugf_m5": 95.26,
+    "ugapf_m3": 0.21568788122233148,
+    "ugapf_m5": 0.21568788122233148,
+    "cvar_m3": 1293.847855416763,
+    "cvar_m5": 1293.847855416763,
+    "explanation": "ECONOMIC RATIONALE FOR M3 vs M5 CONVERGENCE AT MONTH 96 AND DIVERGENCE AT MONTH 360:\n1. Pre-Milestone H (Months 1 to 96): Both M3 and M5 share identical inflows (Scenario C: 500 + 0.50*delta_Y) and identical state machine rules. Vaso 4 Core-Satellite allocation requires crossing a 100,000 EUR threshold before Satellite ETF allocation is unlocked. At Month 96, Vaso 4 has received only 40% of flows for ~45 months, reaching ~12,000 EUR, well below 100,000 EUR. Thus, in both M3 and M5, 100% of Vaso 4 flows go to Core ETF, meaning zero Satellite assets exist and zero rebalancing is triggered prior to Month 96. Consequently, all pots (V1, V2, V3b, V3a, V4) are 100% identical trajectory-by-trajectory at Month 96, explaining why PGF (100.00%), UGF (95.26%), UGapF (0.22%), and CVaR (1293.85 EUR) are mathematically identical.\n2. Maximum Drawdown (MDD): In S-DFP, Market MDD is Time-Weighted Return (TWR) of invested assets. Total Wealth MDD reflects the Milestone H car purchase at Month 96. Because financial wealth up to Month 96 is identical, the 95th percentile of MDD is identical (63.47%).\n3. Post-Milestone H (Months 97 to 360): Vaso 4 crosses 100,000 EUR around Year 16-18. From that point onward, M3 rebalances via annual asset sales incurring capital gains tax drag (1099 EUR), whereas M5 uses pure Inflow Rebalancing within tolerance band [0.35, 0.45], reducing tax drag to 616 EUR. The compounded friction savings create the +884 EUR marginal median wealth advantage of M5 (+587 EUR paired differences median; HL pseudomedian: +776 EUR)."
+  },
+  "point_2_w_total_available_h_definition": {
+    "Regulatory_Framework": "D.Lgs. 252/2005 (Disciplina delle forme pensionistiche complementari)",
+    "Legal_Constraint": "Vaso 0 (TFR / Fondo Pensione) cannot be liquidated for car purchases or general consumer goals under Italian law. It is strictly excluded from available funds at Milestone H.",
+    "S_DFP_Definition": "W_total_available_H = V_3a(H) + V_3a_cash(H) + max(0, V_1(H) - 500) + V_2(H) + V_4_core(H) + V_4_sat(H)",
+    "Vaso_3b_Treatment": "Vaso 3b (Mortgage safety reserve of 4 installments) serves as an operational hard-floor and is protected from car purchase liquidation.",
+    "Fair_Benchmark_Definition": "W_total_available_H = max(0, Cash_buffer(H) - 500) + Equity_portfolio(H) + Bond_portfolio(H) (excluding Vaso 0)",
+    "Naive_Benchmark_Definition": "W_total_available_H = Equity_portfolio(H) + Bond_portfolio(H) (excluding Vaso 0)"
+  },
+  "point_3_tax_drag_breakdown_eur": {
+    "M0_Naive": {
+      "tax_rebalance": 10651.655337034388,
+      "tax_shock_liquidation": 797.8710704730054,
+      "tax_milestone_liquidation": 1137.2595547091344,
+      "tax_coupons": 9328.396523388514,
+      "stamp_duty": 11003.500238353676,
+      "commissions": 2197.1104512444963,
+      "bid_ask_spread": 109.59874422516874,
+      "forced_liq_penalty": 68.96300880035879,
+      "realization_tax_drag": 12586.785962216527,
+      "total_friction_cost": 35294.354928228735
+    },
+    "M1_Naive_Buf": {
+      "tax_rebalance": 10244.969560755024,
+      "tax_shock_liquidation": 25.53223864540906,
+      "tax_milestone_liquidation": 1108.2086254595174,
+      "tax_coupons": 8873.632755529794,
+      "stamp_duty": 10739.28096117324,
+      "commissions": 2043.7922600470818,
+      "bid_ask_spread": 100.55730292938807,
+      "forced_liq_penalty": 44.82970018704281,
+      "realization_tax_drag": 11378.71042485995,
+      "total_friction_cost": 33180.803404726496
+    },
+    "M2_Fair": {
+      "tax_rebalance": 10155.854018246802,
+      "tax_shock_liquidation": 11.342378376043964,
+      "tax_milestone_liquidation": 1108.5632021231256,
+      "tax_coupons": 8801.13658656406,
+      "stamp_duty": 10711.245318476816,
+      "commissions": 2037.2056211124245,
+      "bid_ask_spread": 99.87035621759917,
+      "forced_liq_penalty": 44.463259815070785,
+      "realization_tax_drag": 11275.759598745972,
+      "total_friction_cost": 32969.680740931944
+    },
+    "M3_SDFP_NoInflow": {
+      "tax_rebalance": 1098.6294419444025,
+      "tax_shock_liquidation": 0.1113299321638044,
+      "tax_milestone_liquidation": 0.00013490293842173103,
+      "tax_coupons": 5765.161423914203,
+      "stamp_duty": 10860.72427063829,
+      "commissions": 1363.0284435703275,
+      "bid_ask_spread": 107.28541499629375,
+      "forced_liq_penalty": 0.011634426169494396,
+      "realization_tax_drag": 1098.7409067795047,
+      "total_friction_cost": 19194.952094324784
+    },
+    "M4_SDFP_ScenB": {
+      "tax_rebalance": 411.48913059024454,
+      "tax_shock_liquidation": 0.083760984021679,
+      "tax_milestone_liquidation": 2.3605069530866902e-05,
+      "tax_coupons": 7396.393800862822,
+      "stamp_duty": 14841.828544106298,
+      "commissions": 1591.825706670656,
+      "bid_ask_spread": 150.2070939574803,
+      "forced_liq_penalty": 0.009807435035343868,
+      "realization_tax_drag": 411.5729151793357,
+      "total_friction_cost": 24391.837868211627
+    },
+    "M5_SDFP_ScenC": {
+      "tax_rebalance": 615.7961123629857,
+      "tax_shock_liquidation": 0.1113299321638044,
+      "tax_milestone_liquidation": 0.00013490293842173103,
+      "tax_coupons": 5768.867025708691,
+      "stamp_duty": 10900.870372277795,
+      "commissions": 1349.8669321877192,
+      "bid_ask_spread": 105.92214840083565,
+      "forced_liq_penalty": 0.011634426169494396,
+      "realization_tax_drag": 615.9075771980878,
+      "total_friction_cost": 18741.445690199296
+    },
+    "M6_Fair_LiabMatch": {
+      "tax_rebalance": 9495.761103129536,
+      "tax_shock_liquidation": 11.030473889673981,
+      "tax_milestone_liquidation": 0.47429218446643434,
+      "tax_coupons": 8828.269267598158,
+      "stamp_duty": 10394.221409893415,
+      "commissions": 2066.3224619830016,
+      "bid_ask_spread": 100.44481073791222,
+      "forced_liq_penalty": 0.4473522215804629,
+      "realization_tax_drag": 9507.265869203678,
+      "total_friction_cost": 30896.971171637742
+    },
+    "M7_Fair_LiabInflowReb": {
+      "tax_rebalance": 0.0,
+      "tax_shock_liquidation": 12.550468578366248,
+      "tax_milestone_liquidation": 0.005201440191415517,
+      "tax_coupons": 8222.275305641804,
+      "stamp_duty": 10744.975055057443,
+      "commissions": 1389.6185031125806,
+      "bid_ask_spread": 86.87708730736777,
+      "forced_liq_penalty": 0.42609782028246357,
+      "realization_tax_drag": 12.555670018557661,
+      "total_friction_cost": 20456.727718958035
+    }
+  },
+  "point_4_genuine_historical_stress_tests": [
+    {
+      "Crisis_ID": "GFC_2008",
+      "Description": "Global Financial Crisis (Lehman Collapse & Credit Freeze)",
+      "Cum_Equity_Return_pct": -36.815155217414286,
+      "Cum_Inflation_pct": 2.631534224329579,
+      "Rate_Change_bps": -400.0,
+      "Cum_Bond_Return_pct": 38.1794436808254,
+      "Number_of_Shocks": 4,
+      "Total_Shock_EUR": 11500.0,
+      "Target_at_H_EUR": 25657.883556082394,
+      "S_DFP_M5": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 2115.7228787730674,
+        "Forced_Liquidations_EUR": 0.0,
+        "Market_MDD_pct": 5.9812331232638964,
+        "Total_Wealth_MDD_pct": 75.67933426585974,
+        "MDD_pct": 75.67933426585974
+      },
+      "Fair_M2": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 32596.279289427763,
+        "Market_MDD_pct": 26.309830123804957,
+        "Total_Wealth_MDD_pct": 83.88329051069826,
+        "MDD_pct": 83.88329051069826
+      },
+      "Naive_M0": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 37157.88355608239,
+        "Market_MDD_pct": 26.309830123804957,
+        "Total_Wealth_MDD_pct": 84.68897096688535,
+        "MDD_pct": 84.68897096688535
+      },
+      "M7_Fair_LiabInflowReb": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 0.0,
+        "Market_MDD_pct": 26.309830123804957,
+        "Total_Wealth_MDD_pct": 83.04445760559128,
+        "MDD_pct": 83.04445760559128
+      }
+    },
+    {
+      "Crisis_ID": "Sovereign_2011",
+      "Description": "European Sovereign Debt Crisis (BTP-Bund Spread Widening > 500 bps)",
+      "Cum_Equity_Return_pct": -11.091143779453006,
+      "Cum_Inflation_pct": 5.016769317893921,
+      "Rate_Change_bps": -115.0,
+      "Cum_Bond_Return_pct": 20.016939213980088,
+      "Number_of_Shocks": 3,
+      "Total_Shock_EUR": 5800.0,
+      "Target_at_H_EUR": 26254.19232947348,
+      "S_DFP_M5": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 584.2493351998346,
+        "Forced_Liquidations_EUR": 0.0,
+        "Market_MDD_pct": 4.192944577346635,
+        "Total_Wealth_MDD_pct": 65.93179322657036,
+        "MDD_pct": 65.93179322657036
+      },
+      "Fair_M2": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 27530.377005220394,
+        "Market_MDD_pct": 13.193926189984362,
+        "Total_Wealth_MDD_pct": 65.81793139713078,
+        "MDD_pct": 65.81793139713078
+      },
+      "Naive_M0": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 32054.19232947348,
+        "Market_MDD_pct": 13.193926189984362,
+        "Total_Wealth_MDD_pct": 66.50314451577745,
+        "MDD_pct": 66.50314451577745
+      },
+      "M7_Fair_LiabInflowReb": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 0.0,
+        "Market_MDD_pct": 13.193926189984362,
+        "Total_Wealth_MDD_pct": 65.15975208315947,
+        "MDD_pct": 65.15975208315947
+      }
+    },
+    {
+      "Crisis_ID": "Covid_2020",
+      "Description": "Covid-19 Liquidity Shock (Rapid Crash & V-Shaped Recovery)",
+      "Cum_Equity_Return_pct": 14.442770983524866,
+      "Cum_Inflation_pct": 1.105597094897126,
+      "Rate_Change_bps": 0.0,
+      "Cum_Bond_Return_pct": 2.837890048189129,
+      "Number_of_Shocks": 2,
+      "Total_Shock_EUR": 5500.0,
+      "Target_at_H_EUR": 25276.39927372428,
+      "S_DFP_M5": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 452.2778604767227,
+        "Forced_Liquidations_EUR": 0.0,
+        "Market_MDD_pct": 9.661687961774469,
+        "Total_Wealth_MDD_pct": 60.86431908394667,
+        "MDD_pct": 60.86431908394667
+      },
+      "Fair_M2": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 26275.670035278526,
+        "Market_MDD_pct": 20.929004888888887,
+        "Total_Wealth_MDD_pct": 59.041882750187355,
+        "MDD_pct": 59.041882750187355
+      },
+      "Naive_M0": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 30776.39927372428,
+        "Market_MDD_pct": 20.929004888888887,
+        "Total_Wealth_MDD_pct": 59.91612196947853,
+        "MDD_pct": 59.91612196947853
+      },
+      "M7_Fair_LiabInflowReb": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 0.0,
+        "Market_MDD_pct": 20.929004888888887,
+        "Total_Wealth_MDD_pct": 58.451463922685484,
+        "MDD_pct": 58.451463922685484
+      }
+    },
+    {
+      "Crisis_ID": "Stagflation_2022",
+      "Description": "Stagflation and Rate Hikes (Simultaneous Equity & Bond Drawdown)",
+      "Cum_Equity_Return_pct": -8.16428933157216,
+      "Cum_Inflation_pct": 17.403086295436985,
+      "Rate_Change_bps": 450.0,
+      "Cum_Bond_Return_pct": -20.10766258099571,
+      "Number_of_Shocks": 3,
+      "Total_Shock_EUR": 5500.0,
+      "Target_at_H_EUR": 29350.771573859245,
+      "S_DFP_M5": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 7060.680325051548,
+        "Forced_Liquidations_EUR": 2957.2692856857093,
+        "Market_MDD_pct": 10.648010308081169,
+        "Total_Wealth_MDD_pct": 79.435591561045,
+        "MDD_pct": 79.435591561045
+      },
+      "Fair_M2": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 30346.51445248455,
+        "Market_MDD_pct": 15.070926494929736,
+        "Total_Wealth_MDD_pct": 83.32590312655186,
+        "MDD_pct": 83.32590312655186
+      },
+      "Naive_M0": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 34850.771573859245,
+        "Market_MDD_pct": 15.070926494929736,
+        "Total_Wealth_MDD_pct": 84.07102417788799,
+        "MDD_pct": 84.07102417788799
+      },
+      "M7_Fair_LiabInflowReb": {
+        "PGF_pct": 100.0,
+        "UGF_pct": 0.0,
+        "Shortfall_EUR": 0.0,
+        "Forced_Liquidations_EUR": 0.0,
+        "Market_MDD_pct": 15.070926494929736,
+        "Total_Wealth_MDD_pct": 82.49264409528635,
+        "MDD_pct": 82.49264409528635
+      }
+    }
+  ],
+  "gfc_month_by_month_table": [
+    {
+      "month": 1,
+      "macro": {
+        "r_eq_pct": -2.0,
+        "r_short_pct": 4.25,
+        "inflation_pct": 3.2,
+        "r_bond_bench_pct": 0.4192708333333333,
+        "r_v3a_price_pct": -0.0,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 4513.9453125,
+        "v3a_bonds": 20000.0,
+        "v3a_cash": 346.6666666666667,
+        "v4_eq": 8040.0,
+        "w_fin": 32900.61197916667,
+        "mkt_idx": 0.9959523809523809,
+        "mkt_dd_pct": 0.40476190476190776,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 4513.9453125,
+        "equity": 16764.0,
+        "bonds": 11446.958333333332,
+        "w_fin": 32724.903645833332,
+        "mkt_idx": 0.9896770833333334,
+        "mkt_dd_pct": 1.0322916666666626,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 19410.0,
+        "bonds": 13254.505208333332,
+        "w_fin": 32664.505208333332,
+        "mkt_idx": 0.9896770833333334,
+        "mkt_dd_pct": 1.0322916666666626,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 2,
+      "macro": {
+        "r_eq_pct": -1.5,
+        "r_short_pct": 4.076086956521739,
+        "inflation_pct": 3.0347826086956524,
+        "r_bond_bench_pct": 1.5370244565217406,
+        "r_v3a_price_pct": 1.083333333333335,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 4527.36142034116,
+        "v3a_bonds": 20216.666666666664,
+        "v3a_cash": 694.8692330917875,
+        "v4_eq": 8119.4,
+        "w_fin": 33558.29732009961,
+        "mkt_idx": 1.0010221242895636,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 4527.36142034116,
+        "equity": 16812.54,
+        "bonds": 11822.900882444517,
+        "w_fin": 33162.802302785676,
+        "mkt_idx": 0.9868546211079031,
+        "mkt_dd_pct": 1.3145378892096882,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 19418.85,
+        "bonds": 13658.230194976362,
+        "w_fin": 33077.08019497636,
+        "mkt_idx": 0.9868546211079031,
+        "mkt_dd_pct": 1.3145378892096882,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 3,
+      "macro": {
+        "r_eq_pct": -3.0,
+        "r_short_pct": 3.902173913043479,
+        "inflation_pct": 2.8695652173913047,
+        "r_bond_bench_pct": 1.5243432971014466,
+        "r_v3a_price_pct": 1.0362318840579683,
+        "shock_eur": 1800.0
+      },
+      "S_DFP_M5": {
+        "v1": 2740.2432809042457,
+        "v3a_bonds": 20426.158212560385,
+        "v3a_cash": 1044.50740477114,
+        "v4_eq": 8075.817999999999,
+        "w_fin": 32286.72689823577,
+        "mkt_idx": 1.0014842610943266,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 3.7891386733207106,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 2740.2432809042457,
+        "equity": 16608.163800000002,
+        "bonds": 12203.122479569009,
+        "w_fin": 31551.529560473253,
+        "mkt_idx": 0.9751084588355585,
+        "mkt_dd_pct": 2.4891541164441477,
+        "tot_dd_pct": 4.858674871927444,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 18098.85987484617,
+        "bonds": 13303.853136609996,
+        "w_fin": 31402.713011456166,
+        "mkt_idx": 0.9751084588355585,
+        "mkt_dd_pct": 2.4891541164441477,
+        "tot_dd_pct": 5.062016277284638,
+        "forced_liq_month": 1800.0
+      }
+    },
+    {
+      "month": 4,
+      "macro": {
+        "r_eq_pct": -4.0,
+        "r_short_pct": 3.7282608695652177,
+        "inflation_pct": 2.7043478260869565,
+        "r_bond_bench_pct": 1.511662137681161,
+        "r_v3a_price_pct": 0.9891304347826101,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 3247.6926967980985,
+        "v3a_bonds": 20628.19956009767,
+        "v3a_cash": 1095.4793883901443,
+        "v4_eq": 7752.785279999999,
+        "w_fin": 32724.15692528591,
+        "mkt_idx": 0.9989076264970825,
+        "mkt_dd_pct": 0.2572815866750226,
+        "tot_dd_pct": 2.4856457610383473,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 2747.6926967980985,
+        "equity": 16243.837248000002,
+        "bonds": 12587.592461707512,
+        "w_fin": 31579.122406505616,
+        "mkt_idx": 0.9576019939729224,
+        "mkt_dd_pct": 4.239800602707755,
+        "tot_dd_pct": 4.7754706668653,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 17674.90547985232,
+        "bonds": 13704.962447328839,
+        "w_fin": 31379.86792718116,
+        "mkt_idx": 0.9576019939729224,
+        "mkt_dd_pct": 4.239800602707755,
+        "tot_dd_pct": 5.1310824830692585,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 5,
+      "macro": {
+        "r_eq_pct": -2.5,
+        "r_short_pct": 3.5543478260869565,
+        "inflation_pct": 2.5391304347826087,
+        "r_bond_bench_pct": 1.4989809782608712,
+        "r_v3a_price_pct": 0.9420289855072478,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 3756.1097807914985,
+        "v3a_bonds": 20822.523179142067,
+        "v3a_cash": 1146.9044428371562,
+        "v4_eq": 7558.965647999999,
+        "w_fin": 33284.50305077072,
+        "mkt_idx": 1.0006194530522978,
+        "mkt_dd_pct": 0.08635263434732761,
+        "tot_dd_pct": 0.8158765229274766,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 2754.8139248132375,
+        "equity": 16137.741316800002,
+        "bonds": 12976.278078329507,
+        "w_fin": 31868.83331994275,
+        "mkt_idx": 0.948979672758169,
+        "mkt_dd_pct": 5.102032724183103,
+        "tot_dd_pct": 3.901868638930529,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 17533.032842856013,
+        "bonds": 14110.397227492092,
+        "w_fin": 31643.430070348106,
+        "mkt_idx": 0.948979672758169,
+        "mkt_dd_pct": 5.102032724183103,
+        "tot_dd_pct": 4.334270486323018,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 6,
+      "macro": {
+        "r_eq_pct": -5.0,
+        "r_short_pct": 3.3804347826086962,
+        "inflation_pct": 2.373913043478261,
+        "r_bond_bench_pct": 1.486299818840577,
+        "r_v3a_price_pct": 0.8949275362318817,
+        "shock_eur": 3200.0
+      },
+      "S_DFP_M5": {
+        "v1": 1065.368217151081,
+        "v3a_bonds": 21008.869672810477,
+        "v3a_cash": 1198.752143917075,
+        "v4_eq": 7181.017365599999,
+        "w_fin": 30454.00739947863,
+        "mkt_idx": 0.9955772759550438,
+        "mkt_dd_pct": 0.589823062504078,
+        "tot_dd_pct": 9.250439290797038,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 15394.561143615229,
+        "bonds": 13167.041849899373,
+        "w_fin": 28561.6029935146,
+        "mkt_idx": 0.9261521558382393,
+        "mkt_dd_pct": 7.384784416176071,
+        "tot_dd_pct": 13.874579317094007,
+        "forced_liq_month": 438.3957333453691
+      },
+      "Naive_M0": {
+        "equity": 15232.54221891656,
+        "bonds": 13043.959017718646,
+        "w_fin": 28276.501236635206,
+        "mkt_idx": 0.9261521558382393,
+        "mkt_dd_pct": 7.384784416176071,
+        "tot_dd_pct": 14.513309306757533,
+        "forced_liq_month": 3200.0
+      }
+    },
+    {
+      "month": 7,
+      "macro": {
+        "r_eq_pct": -6.0,
+        "r_short_pct": 3.206521739130435,
+        "inflation_pct": 2.208695652173913,
+        "r_bond_bench_pct": 1.4736186594202914,
+        "r_v3a_price_pct": 0.8478260869565231,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 1567.8591426135094,
+        "v3a_bonds": 21186.988350471263,
+        "v3a_cash": 1250.9912389916221,
+        "v4_eq": 6750.156323663999,
+        "w_fin": 30755.995055740394,
+        "mkt_idx": 0.9883824736710032,
+        "mkt_dd_pct": 1.3082369770850995,
+        "tot_dd_pct": 8.350549605151723,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 14770.887474998313,
+        "bonds": 13561.073835493167,
+        "w_fin": 28331.961310491482,
+        "mkt_idx": 0.898269858621285,
+        "mkt_dd_pct": 10.173014137871505,
+        "tot_dd_pct": 14.5670469829035,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 14618.589685781566,
+        "bonds": 13436.177231730882,
+        "w_fin": 28054.766917512447,
+        "mkt_idx": 0.898269858621285,
+        "mkt_dd_pct": 10.173014137871505,
+        "tot_dd_pct": 15.183665691951518,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 8,
+      "macro": {
+        "r_eq_pct": -8.0,
+        "r_short_pct": 3.0326086956521743,
+        "inflation_pct": 2.0434782608695654,
+        "r_bond_bench_pct": 1.4609374999999993,
+        "r_v3a_price_pct": 0.800724637681159,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 2071.326113747482,
+        "v3a_bonds": 21356.63778617612,
+        "v3a_cash": 1303.5896821975805,
+        "v4_eq": 6210.143817770879,
+        "w_fin": 30941.697399892066,
+        "mkt_idx": 0.977028471942976,
+        "mkt_dd_pct": 2.441954417199492,
+        "tot_dd_pct": 7.79717723831103,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 13889.216476998448,
+        "bonds": 13959.192648558575,
+        "w_fin": 27848.409125557024,
+        "mkt_idx": 0.8604021698937814,
+        "mkt_dd_pct": 13.959783010621862,
+        "tot_dd_pct": 16.025163159333623,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 13749.102510919041,
+        "bonds": 13832.4713834757,
+        "w_fin": 27581.573894394744,
+        "mkt_idx": 0.8604021698937814,
+        "mkt_dd_pct": 13.959783010621862,
+        "tot_dd_pct": 16.614242454859294,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 9,
+      "macro": {
+        "r_eq_pct": -12.0,
+        "r_short_pct": 2.8586956521739135,
+        "inflation_pct": 1.8782608695652174,
+        "r_bond_bench_pct": 1.4482563405797095,
+        "r_v3a_price_pct": 0.7536231884057966,
+        "shock_eur": 4500.0
+      },
+      "S_DFP_M5": {
+        "v1": 0.0,
+        "v3a_bonds": 20949.74475406123,
+        "v3a_cash": 0.0,
+        "v4_eq": 5464.926559638373,
+        "w_fin": 26414.671313699604,
+        "mkt_idx": 0.9580868445718048,
+        "mkt_dd_pct": 4.333309888974317,
+        "tot_dd_pct": 21.28721233458219,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 10426.409701945919,
+        "bonds": 11957.458338997776,
+        "w_fin": 22383.868040943693,
+        "mkt_idx": 0.8034375452534179,
+        "mkt_dd_pct": 19.656245474658206,
+        "tot_dd_pct": 32.50308632975975,
+        "forced_liq_month": 4500.0
+      },
+      "Naive_M0": {
+        "equity": 10304.120753284993,
+        "bonds": 11827.890483669524,
+        "w_fin": 22132.011236954517,
+        "mkt_idx": 0.8034375452534179,
+        "mkt_dd_pct": 19.656245474658206,
+        "tot_dd_pct": 33.08958618325733,
+        "forced_liq_month": 4500.0
+      }
+    },
+    {
+      "month": 10,
+      "macro": {
+        "r_eq_pct": -9.0,
+        "r_short_pct": 2.6847826086956523,
+        "inflation_pct": 1.71304347826087,
+        "r_bond_bench_pct": 1.435575181159422,
+        "r_v3a_price_pct": 0.7065217391304357,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 500.0,
+        "v3a_bonds": 21097.75925504101,
+        "v3a_cash": 49.22810492842902,
+        "v4_eq": 4973.08316927092,
+        "w_fin": 26620.070529240358,
+        "mkt_idx": 0.947388849341196,
+        "mkt_dd_pct": 5.40152390353297,
+        "tot_dd_pct": 20.67514547796688,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 9788.032828770787,
+        "bonds": 12329.116643209905,
+        "w_fin": 22117.149471980694,
+        "mkt_idx": 0.7646654978080433,
+        "mkt_dd_pct": 23.53345021919567,
+        "tot_dd_pct": 33.307356627932336,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 9676.749885489344,
+        "bonds": 12197.6887439078,
+        "w_fin": 21874.438629397144,
+        "mkt_idx": 0.7646654978080433,
+        "mkt_dd_pct": 23.53345021919567,
+        "tot_dd_pct": 33.86829036766262,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 11,
+      "macro": {
+        "r_eq_pct": -7.000000000000001,
+        "r_short_pct": 2.5108695652173916,
+        "inflation_pct": 1.547826086956522,
+        "r_bond_bench_pct": 1.42289402173913,
+        "r_v3a_price_pct": 0.6594202898550722,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 1000.9154211956521,
+        "v3a_bonds": 21236.882160273526,
+        "v3a_cash": 98.87095887041379,
+        "v4_eq": 4624.967347421955,
+        "w_fin": 26961.63588776155,
+        "mkt_idx": 0.9415831527454781,
+        "mkt_dd_pct": 5.9812331232638964,
+        "tot_dd_pct": 19.657318633943383,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 9402.87053075683,
+        "bonds": 12704.546906859385,
+        "w_fin": 22107.417437616215,
+        "mkt_idx": 0.7369016987619504,
+        "mkt_dd_pct": 26.309830123804957,
+        "tot_dd_pct": 33.336702864343906,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 9299.377393505089,
+        "bonds": 12571.248927835211,
+        "w_fin": 21870.6263213403,
+        "mkt_idx": 0.7369016987619504,
+        "mkt_dd_pct": 26.309830123804957,
+        "tot_dd_pct": 33.87981589541287,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 12,
+      "macro": {
+        "r_eq_pct": 2.0,
+        "r_short_pct": 2.336956521739131,
+        "inflation_pct": 1.3826086956521741,
+        "r_bond_bench_pct": 1.41021286231884,
+        "r_v3a_price_pct": 0.6123188405797098,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 1502.6210118986633,
+        "v3a_bonds": 21366.91959089259,
+        "v3a_cash": 148.89558374135063,
+        "v4_eq": 4717.466694370394,
+        "w_fin": 27735.902880903,
+        "mkt_idx": 0.9514894392861407,
+        "mkt_dd_pct": 4.9920726416165895,
+        "tot_dd_pct": 17.35008896208007,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 9890.927941371967,
+        "bonds": 13083.708061439245,
+        "w_fin": 22974.63600281121,
+        "mkt_idx": 0.7499012721625287,
+        "mkt_dd_pct": 25.009872783747134,
+        "tot_dd_pct": 30.721668835322337,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 9785.36494137519,
+        "bonds": 12948.530297169662,
+        "w_fin": 22733.89523854485,
+        "mkt_idx": 0.7499012721625287,
+        "mkt_dd_pct": 25.009872783747134,
+        "tot_dd_pct": 31.26994551956373,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 13,
+      "macro": {
+        "r_eq_pct": 4.0,
+        "r_short_pct": 2.1630434782608696,
+        "inflation_pct": 1.2173913043478264,
+        "r_bond_bench_pct": 1.3975317028985523,
+        "r_v3a_price_pct": 0.5652173913043487,
+        "shock_eur": 2000.0
+      },
+      "S_DFP_M5": {
+        "v1": 4.990974613308936,
+        "v3a_bonds": 21487.68913640633,
+        "v3a_cash": 199.26836603353573,
+        "v4_eq": 4906.165362145211,
+        "w_fin": 26598.113839198384,
+        "mkt_idx": 0.9645966417761044,
+        "mkt_dd_pct": 3.683294960413555,
+        "tot_dd_pct": 20.740573976417014,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 9706.299701369095,
+        "bonds": 12346.822387170303,
+        "w_fin": 22053.1220885394,
+        "mkt_idx": 0.7720909459019937,
+        "mkt_dd_pct": 22.790905409800633,
+        "tot_dd_pct": 33.50042651043716,
+        "forced_liq_month": 2000.0
+      },
+      "Naive_M0": {
+        "equity": 9596.609760891217,
+        "bonds": 12209.659891271014,
+        "w_fin": 21806.26965216223,
+        "mkt_idx": 0.7720909459019937,
+        "mkt_dd_pct": 22.790905409800633,
+        "tot_dd_pct": 34.07438164546913,
+        "forced_liq_month": 2000.0
+      }
+    },
+    {
+      "month": 14,
+      "macro": {
+        "r_eq_pct": -5.0,
+        "r_short_pct": 1.9891304347826089,
+        "inflation_pct": 1.0521739130434786,
+        "r_bond_bench_pct": 1.3848505434782603,
+        "r_v3a_price_pct": 0.5181159420289851,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 504.9982135608629,
+        "v3a_bonds": 21599.020279395685,
+        "v3a_cash": 249.9551003730597,
+        "v4_eq": 4660.8570940379495,
+        "w_fin": 27014.830687367557,
+        "mkt_idx": 0.9615326332529532,
+        "mkt_dd_pct": 3.9892417078744775,
+        "tot_dd_pct": 19.498804037393374,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 9520.98471630064,
+        "bonds": 12717.807424101326,
+        "w_fin": 22238.792140401965,
+        "mkt_idx": 0.753205139789122,
+        "mkt_dd_pct": 24.679486021087804,
+        "tot_dd_pct": 32.9405520759206,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 9416.779272846656,
+        "bonds": 12578.745432632128,
+        "w_fin": 21995.524705478783,
+        "mkt_idx": 0.753205139789122,
+        "mkt_dd_pct": 24.679486021087804,
+        "tot_dd_pct": 33.50221792303363,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 15,
+      "macro": {
+        "r_eq_pct": -4.0,
+        "r_short_pct": 1.8152173913043481,
+        "inflation_pct": 0.8869565217391305,
+        "r_bond_bench_pct": 1.3721693840579703,
+        "r_v3a_price_pct": 0.47101449275362295,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 1005.6666271836581,
+        "v3a_bonds": 21700.754795204433,
+        "v3a_cash": 300.9210344698593,
+        "v4_eq": 4474.422810276431,
+        "w_fin": 27481.765267134382,
+        "mkt_idx": 0.9602766279865032,
+        "mkt_dd_pct": 4.114656086836124,
+        "tot_dd_pct": 18.107390833937558,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 9440.145327648614,
+        "bonds": 13092.317283898295,
+        "w_fin": 22532.462611546907,
+        "mkt_idx": 0.739262316565118,
+        "mkt_dd_pct": 26.0737683434882,
+        "tot_dd_pct": 32.05501029189509,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 9340.108101932788,
+        "bonds": 12951.347126357297,
+        "w_fin": 22291.455228290084,
+        "mkt_idx": 0.739262316565118,
+        "mkt_dd_pct": 26.0737683434882,
+        "tot_dd_pct": 32.60754849917002,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 16,
+      "macro": {
+        "r_eq_pct": 3.0,
+        "r_short_pct": 1.6413043478260871,
+        "inflation_pct": 0.7217391304347829,
+        "r_bond_bench_pct": 1.3594882246376827,
+        "r_v3a_price_pct": 0.42391304347826153,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 1506.870193335077,
+        "v3a_bonds": 21792.74712531454,
+        "v3a_cash": 352.1309153680509,
+        "v4_eq": 4608.655494584724,
+        "w_fin": 28260.403728602396,
+        "mkt_idx": 0.9704336666834147,
+        "mkt_dd_pct": 3.100457552571303,
+        "tot_dd_pct": 15.787134671829921,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 10023.349687478072,
+        "bonds": 13470.305795705095,
+        "w_fin": 23493.655483183167,
+        "mkt_idx": 0.7565891119204446,
+        "mkt_dd_pct": 24.341088807955536,
+        "tot_dd_pct": 29.156603628729833,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 9920.311344990772,
+        "bonds": 13327.419165472074,
+        "w_fin": 23247.730510462847,
+        "mkt_idx": 0.7565891119204446,
+        "mkt_dd_pct": 24.341088807955536,
+        "tot_dd_pct": 29.716497425327056,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 17,
+      "macro": {
+        "r_eq_pct": 2.0,
+        "r_short_pct": 1.4673913043478264,
+        "inflation_pct": 0.5565217391304351,
+        "r_bond_bench_pct": 1.3468070652173907,
+        "r_v3a_price_pct": 0.3768115942028983,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 2008.482503494386,
+        "v3a_bonds": 21874.86472317805,
+        "v3a_cash": 403.54903689946866,
+        "v4_eq": 4700.828604476418,
+        "w_fin": 28987.72486804832,
+        "mkt_idx": 0.9787091313083207,
+        "mkt_dd_pct": 2.274137564690177,
+        "tot_dd_pct": 13.619798431530569,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 10523.816681227634,
+        "bonds": 13851.72482586804,
+        "w_fin": 24375.541507095673,
+        "mkt_idx": 0.7697440995090941,
+        "mkt_dd_pct": 23.025590049090596,
+        "tot_dd_pct": 26.497340952853893,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 10418.717571890587,
+        "bonds": 13706.91378840379,
+        "w_fin": 24125.631360294377,
+        "mkt_idx": 0.7697440995090941,
+        "mkt_dd_pct": 23.025590049090596,
+        "tot_dd_pct": 27.062391184217955,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 18,
+      "macro": {
+        "r_eq_pct": 5.0,
+        "r_short_pct": 1.2934782608695654,
+        "inflation_pct": 0.39130434782608736,
+        "r_bond_bench_pct": 1.3341259057971007,
+        "r_v3a_price_pct": 0.3297101449275361,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 2510.3768263265993,
+        "v3a_bonds": 21946.98837135954,
+        "v3a_cash": 455.13928823940864,
+        "v4_eq": 4935.87003470024,
+        "w_fin": 29848.374520625788,
+        "mkt_idx": 0.9919008813428466,
+        "mkt_dd_pct": 0.9569176594955415,
+        "tot_dd_pct": 11.055158025707641,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 11350.007515289017,
+        "bonds": 14236.524275169671,
+        "w_fin": 25586.53179045869,
+        "mkt_idx": 0.796944164670325,
+        "mkt_dd_pct": 20.305583532967496,
+        "tot_dd_pct": 22.845688501090816,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 11239.653450485117,
+        "bonds": 14089.781276140158,
+        "w_fin": 25329.434726625273,
+        "mkt_idx": 0.796944164670325,
+        "mkt_dd_pct": 20.305583532967496,
+        "tot_dd_pct": 23.423002945489053,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 19,
+      "macro": {
+        "r_eq_pct": 3.0,
+        "r_short_pct": 1.1195652173913044,
+        "inflation_pct": 0.2260869565217396,
+        "r_bond_bench_pct": 1.3214447463768133,
+        "r_v3a_price_pct": 0.28260869565217434,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 3012.426171539214,
+        "v3a_bonds": 22009.012468930774,
+        "v3a_cash": 506.86520345996246,
+        "v4_eq": 5083.9461357412465,
+        "w_fin": 30612.249979671196,
+        "mkt_idx": 1.0015424698541922,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 8.778893971667308,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 11990.507740747687,
+        "bonds": 14624.65207727056,
+        "w_fin": 26615.15981801825,
+        "mkt_idx": 0.8155016303526279,
+        "mkt_dd_pct": 18.44983696473721,
+        "tot_dd_pct": 19.743936067240693,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 11876.843053999672,
+        "bonds": 14475.969950589695,
+        "w_fin": 26352.813004589367,
+        "mkt_idx": 0.8155016303526279,
+        "mkt_dd_pct": 18.44983696473721,
+        "tot_dd_pct": 20.329083313128272,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 20,
+      "macro": {
+        "r_eq_pct": 2.0,
+        "r_short_pct": 0.945652173913044,
+        "inflation_pct": 0.06086956521739184,
+        "r_bond_bench_pct": 1.3087635869565188,
+        "r_v3a_price_pct": 0.235507246376811,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 3514.5033539876595,
+        "v3a_bonds": 22060.845288151086,
+        "v3a_cash": 558.6900119730159,
+        "v4_eq": 5185.625058456071,
+        "w_fin": 31319.66371256783,
+        "mkt_idx": 1.009115732971989,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 6.670879592544048,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 12530.31789556264,
+        "bonds": 15016.05419837696,
+        "w_fin": 27546.3720939396,
+        "mkt_idx": 0.8295568452724963,
+        "mkt_dd_pct": 17.04431547275037,
+        "tot_dd_pct": 16.93593369331848,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 12414.379915079666,
+        "bonds": 14865.426174161783,
+        "w_fin": 27279.80608924145,
+        "mkt_idx": 0.8295568452724963,
+        "mkt_dd_pct": 17.04431547275037,
+        "tot_dd_pct": 17.526559392673914,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 21,
+      "macro": {
+        "r_eq_pct": 1.0,
+        "r_short_pct": 0.7717391304347829,
+        "inflation_pct": -0.10434782608695625,
+        "r_bond_bench_pct": 1.2960824275362335,
+        "r_v3a_price_pct": 0.18840579710144953,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 4016.481057981015,
+        "v3a_bonds": 22102.409199563543,
+        "v3a_cash": 610.576689752014,
+        "v4_eq": 5237.481309040632,
+        "w_fin": 31966.948256337204,
+        "mkt_idx": 1.0144821637133459,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 4.742043520811399,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 12955.621074518267,
+        "bonds": 15410.67463815144,
+        "w_fin": 28366.295712669707,
+        "mkt_idx": 0.8388348825433315,
+        "mkt_dd_pct": 16.116511745666852,
+        "tot_dd_pct": 14.463514109340098,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 12838.523714230463,
+        "bonds": 15258.094350583464,
+        "w_fin": 28096.618064813927,
+        "mkt_idx": 0.8388348825433315,
+        "mkt_dd_pct": 16.116511745666852,
+        "tot_dd_pct": 15.057139568560988,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 22,
+      "macro": {
+        "r_eq_pct": 2.0,
+        "r_short_pct": 0.5978260869565217,
+        "inflation_pct": -0.2695652173913037,
+        "r_bond_bench_pct": 1.2834012681159437,
+        "r_v3a_price_pct": 0.14130434782608717,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 4500.0,
+        "v3a_bonds": 22133.64086473684,
+        "v3a_cash": 673.4271522625411,
+        "v4_eq": 5349.523695917168,
+        "w_fin": 32656.59171291655,
+        "mkt_idx": 1.0214415829937447,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 2.6869825920607417,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 13514.733496008632,
+        "bonds": 15808.455431882698,
+        "w_fin": 29323.18892789133,
+        "mkt_idx": 0.8532071481418354,
+        "mkt_dd_pct": 14.67928518581646,
+        "tot_dd_pct": 11.578072744991816,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 13395.294188515072,
+        "bonds": 15653.91692696918,
+        "w_fin": 29049.21111548425,
+        "mkt_idx": 0.8532071481418354,
+        "mkt_dd_pct": 14.67928518581646,
+        "tot_dd_pct": 12.177220769636893,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 23,
+      "macro": {
+        "r_eq_pct": 1.0,
+        "r_short_pct": 0.4239130434782613,
+        "inflation_pct": -0.4347826086956518,
+        "r_bond_bench_pct": 1.2707201086956492,
+        "r_v3a_price_pct": 0.09420289855072439,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 4501.390964673913,
+        "v3a_bonds": 22154.49139598623,
+        "v3a_cash": 1025.3291240485646,
+        "v4_eq": 5603.01893287634,
+        "w_fin": 33284.230417585044,
+        "mkt_idx": 1.0261241723996761,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 0.8166889395500337,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 13949.880830968717,
+        "bonds": 16209.33665392982,
+        "w_fin": 30159.217484898538,
+        "mkt_idx": 0.8626631409507932,
+        "mkt_dd_pct": 13.733685904920678,
+        "tot_dd_pct": 9.057089899893162,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 13829.247130400223,
+        "bonds": 16052.834397158687,
+        "w_fin": 29882.081527558912,
+        "mkt_idx": 0.8626631409507932,
+        "mkt_dd_pct": 13.733685904920678,
+        "tot_dd_pct": 9.65925241461517,
+        "forced_liq_month": 0.0
+      }
+    },
+    {
+      "month": 24,
+      "macro": {
+        "r_eq_pct": 1.0,
+        "r_short_pct": 0.25,
+        "inflation_pct": -0.6,
+        "r_bond_bench_pct": 1.2580389492753652,
+        "r_v3a_price_pct": 0.047101449275362445,
+        "shock_eur": 0.0
+      },
+      "S_DFP_M5": {
+        "v1": 4502.211530735182,
+        "v3a_bonds": 22164.926482513325,
+        "v3a_cash": 1377.2341947960006,
+        "v4_eq": 5859.049122205103,
+        "w_fin": 33903.421330249614,
+        "mkt_idx": 1.0304922117551967,
+        "mkt_dd_pct": 0.0,
+        "tot_dd_pct": 0.0,
+        "forced_liq_month": 0.0
+      },
+      "Fair_M2": {
+        "cash_buffer": 0.0,
+        "equity": 14389.379639278404,
+        "bonds": 16613.256422455426,
+        "w_fin": 31002.63606173383,
+        "mkt_idx": 0.8721801751221792,
+        "mkt_dd_pct": 12.781982487782084,
+        "tot_dd_pct": 6.51382299158233,
+        "forced_liq_month": 0.0
+      },
+      "Naive_M0": {
+        "equity": 14267.539601704226,
+        "bonds": 16454.785306337617,
+        "w_fin": 30722.324908041843,
+        "mkt_idx": 0.8721801751221792,
+        "mkt_dd_pct": 12.781982487782084,
+        "tot_dd_pct": 7.118993795867606,
+        "forced_liq_month": 0.0
+      }
+    }
+  ],
+  "point_5_vaso3a_rir_reformulation": {
+    "Nominal_Strategy": {
+      "RIR_overall": 0.05424670763551449,
+      "RIR_success_paths": 0.056598709821907095,
+      "RIR_shortfall_paths": 0.04087462723445744,
+      "Funding_Ratio_p10": 0.986804439677173,
+      "Funding_Ratio_median": 1.0368651759711611,
+      "Funding_Ratio_p90": 1.085123605897546
+    },
+    "Real_Linkers_Strategy": {
+      "RIR_overall": 0.06840257497462163,
+      "RIR_success_paths": 0.06917468703662427,
+      "RIR_shortfall_paths": 0.05158135377722517,
+      "Funding_Ratio_p10": 1.0174196619234717,
+      "Funding_Ratio_median": 1.0628358579456725,
+      "Funding_Ratio_p90": 1.0972982401896294
+    },
+    "Mixed_Hybrid_Strategy": {
+      "RIR_overall": 0.059070277424591235,
+      "RIR_success_paths": 0.06000066890877258,
+      "RIR_shortfall_paths": 0.04717633297059618,
+      "Funding_Ratio_p10": 1.0047253938025509,
+      "Funding_Ratio_median": 1.0500815536906363,
+      "Funding_Ratio_p90": 1.087448041250444
+    },
+    "Variance_Decomposition": {
+      "Total_Tracking_Variance": 0.0012868950310540455,
+      "Marginal_Variance_Reductions": {
+        "Unanticipated_Inflation_Volatility": 0.0,
+        "Three_Month_FOI_Indexation_Lag": 4.32589193971036e-07,
+        "Coupon_Withholding_Tax_12_5pct": 0.0,
+        "Batch_Purchase_Tranches_Friction": 0.0,
+        "Issuance_Gap_Monetary_Switch": 4.447239564490534e-05
+      },
+      "Components_Estimated_Share": {
+        "Unanticipated_Inflation_Volatility": 0.0,
+        "Three_Month_FOI_Indexation_Lag": 0.009633433693903022,
+        "Coupon_Withholding_Tax_12_5pct": 0.0,
+        "Batch_Purchase_Tranches_Friction": 0.0,
+        "Issuance_Gap_Monetary_Switch": 0.990366566306097
+      }
+    }
+  },
+  "point_6_and_7_multi_objective_tradeoff": {
+    "Scientific_Principle": "No single strategy globally Pareto-dominates across all objective dimensions. S-DFP represents a balanced multi-objective compromise under behavioral and liquidity constraints.",
+    "Dimension_TradeOffs": {
+      "Terminal_Wealth": "Naïve (M0) and Fair (M2) achieve slightly higher unconstrained median wealth (+7.000 to +8.000 EUR) if equity avoids severe sequence risk, because they hold 0 dedicated bonds for Milestone H and keep higher equity beta. S-DFP incurs an opportunity cost by dedicating flows to Vaso 3A.",
+      "Unforced_Goal_Fulfillment_UGF": "S-DFP (M5) achieves 95.26% UGF and M6 achieves 98.71%, whereas Naïve (M0) and Fair (M2) achieve 0.00% UGF because they are forced to sell growth assets at market price.",
+      "Tail_Drawdown_Total_Wealth": "S-DFP (M5) cuts 95th percentile total wealth drawdown from 94.20% (Fair M2) down to 63.47% (a massive -30.73 percentage point reduction), completely shielding the growth pot from Milestone fire-sales.",
+      "Tax_Drag_Efficiency": "S-DFP (M5) incurs 616 EUR realization tax drag on rebalancing via Inflow Rebalancing, compared to 11.276 EUR in Fair M2 and 1099 EUR in M3.",
+      "Liquidity_Adjusted_Wealth_LAW": "S-DFP maintains disciplined tiered buffers, protecting liquid reserves under stochastic dual shocks.",
+      "Behavioral_Compliance": "Scenario C (M5) pays a wealth differential compared to theoretical austerity (M4) as an insurance premium against Present Bias and willpower depletion."
+    }
+  }
+}
