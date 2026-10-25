@@ -1,10 +1,14 @@
-# Requirements for S-DFP Streamlit Cloud Deployment
+# Requirements for S-DFP Streamlit Cloud Deployment (Stable)
 streamlit>=1.35.0
-pandas>=2.0.0
-numpy>=1.26.0
+pandas==1.5.3
+numpy<2.0.0
 scipy>=1.11.0
 plotly>=5.20.0
 matplotlib>=3.8.0
 pyyaml>=6.0.0
-st-gsheets-connection>=0.1.0
-gspread>=6.0.0
+
+# Google Sheets Integration (Pinned to avoid conflicts)
+st-gsheets-connection==0.0.4
+gspread==5.12.0
+google-auth==2.28.1
+google-auth-oauthlib==1.2.0
