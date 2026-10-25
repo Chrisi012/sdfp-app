@@ -20,6 +20,11 @@ from pathlib import Path
 import datetime
 from datetime import date, timedelta
 
+try:
+    from streamlit_gsheets import GSheetsConnection
+except Exception:
+    GSheetsConnection = None
+
 # Percorsi base per risoluzione dinamica file locali o in output/ (relativi alla cartella di deploy)
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -36,6 +41,108 @@ def resolve_file_path(filename: str) -> Path | None:
     if p_out.exists():
         return p_out
     return None
+
+# Connessione e gestione persistenza Google Sheets
+try:
+    if GSheetsConnection is not None:
+        conn = st.connection("gsheets", type=GSheetsConnection)
+    else:
+        conn = None
+except Exception as e:
+    conn = None
+
+
+def get_default_user_data() -> dict:
+    """Restituisce il dizionario con i parametri di default del modello S-DFP."""
+    return {
+        "Y0": 2000.0,
+        "ral_0": 32000.0,
+        "g_Y_pct": 1.8,
+        "smart_lifestyle_choice": "Aumenta tenore di vita (Regola SMarT: 50% spese / 50% risparmio)",
+        "split_consumo_pct": 50,
+        "no_mortgage": False,
+        "mortgage_R0": 600.0,
+        "E_base": 1500.0,
+        "override_spese": False,
+        "eta_attuale": 30,
+        "eta_pensionabile": 67,
+        "include_decumulo": True,
+        "enable_goal_H": True,
+        "T3a_0": 25000.0,
+        "H_years": 8,
+        "current_month_t": 1,
+        "target_mode": "Consigliato da S-DFP (Automatico)",
+        "input_v1": 5000.0,
+        "input_v2": 2000.0,
+        "input_v3b": 2400.0,
+        "input_v3a": 15000.0,
+        "input_v4": 25000.0,
+    }
+
+
+def load_user_data() -> dict:
+    """
+    Legge i dati utente dal foglio Google Sheets tramite conn.read(ttl=0).
+    Se il foglio è vuoto o la connessione fallisce, restituisce i parametri di default.
+    Gestisce eventuali errori con un blocco try/except e mostra un st.warning() in caso di problemi.
+    """
+    defaults = get_default_user_data()
+    try:
+        if conn is None:
+            return defaults
+        df = conn.read(ttl=0)
+        if df is not None and not df.empty:
+            df_valid = df.dropna(how="all")
+            if not df_valid.empty:
+                row_dict = df_valid.iloc[0].to_dict()
+                merged = defaults.copy()
+                for k, v in row_dict.items():
+                    if k in merged and pd.notna(v):
+                        def_type = type(defaults[k])
+                        try:
+                            if def_type is bool:
+                                merged[k] = bool(v) if not isinstance(v, str) else v.strip().lower() in ['true', '1', 't', 'si', 'yes']
+                            elif def_type is int:
+                                merged[k] = int(float(v))
+                            elif def_type is float:
+                                merged[k] = float(v)
+                            else:
+                                merged[k] = str(v)
+                        except Exception:
+                            pass
+                return merged
+        return defaults
+    except Exception as err:
+        st.warning(f"⚠️ Impossibile leggere i dati da Google Sheets: {err}. Vengono utilizzati i parametri di default. Verifica i permessi del Service Account sul foglio Google.")
+        return defaults
+
+
+def save_user_data(data) -> bool:
+    """
+    Scrive i dati utente su Google Sheets tramite conn.update(data=...).
+    Formatta i dati in formato tabellare (DataFrame Pandas a una sola riga).
+    Gestisce eventuali errori con un blocco try/except e mostra un st.warning() in caso di fallimento.
+    """
+    try:
+        if conn is None:
+            st.warning("⚠️ Impossibile salvare su Google Sheets: connessione non disponibile. Verifica la presenza della sezione [connections.gsheets] nei Secrets di Streamlit.")
+            return False
+        
+        # Formato tabellare con una sola riga
+        if isinstance(data, dict):
+            df_to_save = pd.DataFrame([data])
+        elif isinstance(data, pd.DataFrame):
+            df_to_save = data
+        else:
+            df_to_save = pd.DataFrame(data)
+
+        conn.update(data=df_to_save)
+        return True
+    except Exception as err:
+        st.warning(f"⚠️ Errore durante il salvataggio su Google Sheets: {err}. Verifica che il Service Account abbia i permessi di Editor sul foglio Google.")
+        return False
+
+
 
 # Integrazione diretta con il motore di simulazione quantitativo
 import simulate_sdfp
@@ -729,9 +836,25 @@ def apply_realloc_action(v1_new, v2_new, v3b_new, v3a_new, v4_new):
 # 3. SIDEBAR DEI PARAMETRI UTENTE
 # ------------------------------------------------------------------------------
 
+# Inizializzazione Session State per configurazione utente (da Google Sheets o default)
+if "user_data" not in st.session_state:
+    st.session_state["user_data"] = load_user_data()
+
+user_cfg = st.session_state["user_data"]
+
 with st.sidebar:
     st.markdown("### ⚙️ Parametri del Modello")
     st.markdown("Configura il profilo finanziario e le preferenze comportamentali.")
+
+    # Sincronizzazione Cloud Google Sheets
+    with st.expander("☁️ Google Sheets Cloud Sync", expanded=False):
+        st.caption("Persistenza cloud con [connections.gsheets].")
+        col_g1, col_g2 = st.columns(2)
+        with col_g2:
+            if st.button("🔄 Ricarica", use_container_width=True, help="Ricarica i parametri dal foglio Google Sheets"):
+                st.session_state["user_data"] = load_user_data()
+                st.success("Parametri ricaricati!")
+                st.rerun()
     
     # --- Profilo di Reddito ---
     with st.expander("💼 Profilo di Reddito", expanded=True):
@@ -739,7 +862,7 @@ with st.sidebar:
             "Stipendio netto mensile (€)",
             min_value=800.0,
             max_value=25000.0,
-            value=2000.0,
+            value=float(user_cfg.get("Y0", 2000.0)),
             step=100.0,
             help="Reddito da lavoro netto mensile di partenza (base tempo t=0)."
         )
@@ -775,7 +898,7 @@ with st.sidebar:
             "RAL di partenza (€)",
             min_value=12000.0,
             max_value=300000.0,
-            value=32000.0,
+            value=float(user_cfg.get("ral_0", 32000.0)),
             step=1000.0,
             help="Retribuzione Annua Lorda da cui derivano il TFR (6,91%) e la contribuzione aziendale (1,5%)."
         )
@@ -783,7 +906,7 @@ with st.sidebar:
             "Crescita salariale annua (%)",
             min_value=0.0,
             max_value=5.0,
-            value=1.8,
+            value=float(user_cfg.get("g_Y_pct", 1.8)),
             step=0.1,
             help="Tasso nominale annuo di incremento stipendiale (default benchmark accademico: 1,8% p.a.)."
         )
@@ -791,13 +914,13 @@ with st.sidebar:
 
     # --- Spese e Passività ---
     with st.expander("🏠 Spese e Passività", expanded=True):
-        no_mortgage = st.checkbox("Nessun mutuo in corso", value=False)
+        no_mortgage = st.checkbox("Nessun mutuo in corso", value=bool(user_cfg.get("no_mortgage", False)))
         if not no_mortgage:
             mortgage_R0 = st.number_input(
                 "Rata mensile del mutuo (€)",
                 min_value=100.0,
                 max_value=5000.0,
-                value=600.0,
+                value=float(user_cfg.get("mortgage_R0", 600.0)),
                 step=50.0,
                 help="Rata mensile per finanziamento prima casa. Determina il Vaso 3B (buffer = 4 rate)."
             )
@@ -818,7 +941,7 @@ with st.sidebar:
             "Spese mensili ordinarie di partenza (€)",
             min_value=500.0,
             max_value=20000.0,
-            value=1500.0,
+            value=float(user_cfg.get("E_base", 1500.0)),
             step=50.0,
             help=e_base_help
         )
@@ -880,7 +1003,7 @@ with st.sidebar:
                 "Età attuale",
                 min_value=18,
                 max_value=75,
-                value=30,
+                value=int(user_cfg.get("eta_attuale", 30)),
                 step=1,
                 help="Età anagrafica dell'investitore all'inizio del piano (t=0)."
             )
@@ -889,7 +1012,7 @@ with st.sidebar:
                 "Età pensionabile",
                 min_value=max(50, int(eta_attuale) + 1),
                 max_value=85,
-                value=67,
+                value=int(user_cfg.get("eta_pensionabile", 67)),
                 step=1,
                 help="Età anagrafica programmata per il pensionamento."
             )
@@ -899,7 +1022,7 @@ with st.sidebar:
         
         include_decumulo = st.checkbox(
             "Includi fase di decumulo post-pensione (20 anni = 240 mesi)",
-            value=True,
+            value=bool(user_cfg.get("include_decumulo", True)),
             help="Se attivo: T_horizon = T_retire + 240 (20 anni di decumulo post-pensionamento). Se disattivato: orizzonte limitato alla sola fase di accumulo fino alla pensione (T_horizon = T_retire, con glidepath negli ultimi 7 anni)."
         )
         if include_decumulo:
@@ -919,13 +1042,13 @@ with st.sidebar:
 
     # --- Obiettivo a Medio Termine (Milestone H) ---
     with st.expander("🎯 Obiettivo Medio Termine (Milestone H)", expanded=True):
-        enable_goal_H = st.checkbox("Attiva Obiettivo Programmato (Auto/Progetto)", value=True)
+        enable_goal_H = st.checkbox("Attiva Obiettivo Programmato (Auto/Progetto)", value=bool(user_cfg.get("enable_goal_H", True)))
         if enable_goal_H:
             T3a_0 = st.number_input(
                 "Costo stimato obiettivo (€ a t=0)",
                 min_value=2000.0,
                 max_value=150000.0,
-                value=25000.0,
+                value=float(user_cfg.get("T3a_0", 25000.0)),
                 step=1000.0,
                 help="Spesa programmata reale (es. acquisto autovettura), indicizzata all'inflazione cumulata."
             )
@@ -933,7 +1056,7 @@ with st.sidebar:
                 "Orizzonte temporale Milestone H (Anni)",
                 min_value=3,
                 max_value=min(15, max(4, T_horizon_val // 12 - 1)),
-                value=8,
+                value=int(user_cfg.get("H_years", 8)),
                 step=1,
                 help=f"Numero di anni alla scadenza dell'obiettivo (default 8 anni = 96 mesi, età anagrafica: {int(eta_attuale + 8)} anni)."
             )
@@ -1108,6 +1231,37 @@ with st.sidebar:
         • Soglia Sblocco V3A: <b>{threshold_v3a_p4:,.0f} € ({threshold_p4_pct:.0f}%)</b>
     </div>
     """, unsafe_allow_html=True)
+
+    st.markdown("---")
+    st.markdown("##### ☁️ Persistenza Google Sheets")
+    if st.button("💾 Salva Configurazione su Google Sheets", use_container_width=True, help="Salva i parametri correnti sul foglio Google Sheets collegato"):
+        payload = {
+            "Y0": Y0,
+            "ral_0": ral_0,
+            "g_Y_pct": g_Y_pct,
+            "smart_lifestyle_choice": smart_lifestyle_choice,
+            "split_consumo_pct": int(split_consumo * 100),
+            "no_mortgage": no_mortgage,
+            "mortgage_R0": mortgage_R0,
+            "E_base": E_base,
+            "override_spese": override_spese,
+            "eta_attuale": eta_attuale,
+            "eta_pensionabile": eta_pensionabile,
+            "include_decumulo": include_decumulo,
+            "enable_goal_H": enable_goal_H,
+            "T3a_0": T3a_0,
+            "H_years": H_years,
+            "current_month_t": current_month_t,
+            "target_mode": target_mode,
+            "input_v1": st.session_state.get("input_v1", t1_target + 500.0),
+            "input_v2": st.session_state.get("input_v2", max(0.0, t2_target - 400.0)),
+            "input_v3b": st.session_state.get("input_v3b", t3b_target),
+            "input_v3a": st.session_state.get("input_v3a", min(16000.0, t3a_target) if t3a_target > 0 else 0.0),
+            "input_v4": st.session_state.get("input_v4", 25000.0),
+        }
+        if save_user_data(payload):
+            st.session_state["user_data"] = payload
+            st.success("✅ Parametri salvati con successo su Google Sheets!")
 
 
 # ------------------------------------------------------------------------------
@@ -1345,15 +1499,15 @@ with tab1:
 
     # Inizializzazione session state con valori realistici
     if "input_v1" not in st.session_state:
-        st.session_state["input_v1"] = float(t1_target + 500.0)  # default con 500 € di surplus per dimostrare la feature
+        st.session_state["input_v1"] = float(user_cfg.get("input_v1", t1_target + 500.0))
     if "input_v2" not in st.session_state:
-        st.session_state["input_v2"] = float(max(0.0, t2_target - 400.0))  # default con deficit di 400 € pronto ad accogliere il surplus
+        st.session_state["input_v2"] = float(user_cfg.get("input_v2", max(0.0, t2_target - 400.0)))
     if "input_v3b" not in st.session_state:
-        st.session_state["input_v3b"] = float(t3b_target)
+        st.session_state["input_v3b"] = float(user_cfg.get("input_v3b", t3b_target))
     if "input_v3a" not in st.session_state:
-        st.session_state["input_v3a"] = float(min(16000.0, t3a_target) if t3a_target > 0 else 0.0)
+        st.session_state["input_v3a"] = float(user_cfg.get("input_v3a", min(16000.0, t3a_target) if t3a_target > 0 else 0.0))
     if "input_v4" not in st.session_state:
-        st.session_state["input_v4"] = float(25000.0)
+        st.session_state["input_v4"] = float(user_cfg.get("input_v4", 25000.0))
 
     # Scelta modalità inserimento saldi
     col_opt, col_info = st.columns([1, 2])
