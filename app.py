@@ -50,83 +50,8 @@ from simulate_sdfp import (
 
 
 def get_default_portfolio_assets():
-    """Genera l'elenco iniziale dei titoli di esempio secondo le specifiche del modello S-DFP."""
-    today = datetime.date.today()
-    return [
-        {
-            "id": "AST-01",
-            "nome": "XEON Monetario (€STR Swap UCITS ETF)",
-            "isin": "LU0290358497",
-            "categoria": "Strumento Monetario / Liquidità (€STR)",
-            "vaso": "Vaso 1 (Emergenza)",
-            "importo": 5000.0,
-            "pmc": 142.50,
-            "has_scadenza": False,
-            "scadenza": None,
-            "note": "Buffer liquidità immediata anti-ZIRP"
-        },
-        {
-            "id": "AST-02",
-            "nome": "Conto Deposito Sinking Fund (Vincolato 12M)",
-            "isin": "",
-            "categoria": "Strumento Monetario / Liquidità (€STR)",
-            "vaso": "Vaso 2 (Sinking)",
-            "importo": 2000.0,
-            "pmc": 2000.0,
-            "has_scadenza": True,
-            "scadenza": today + datetime.timedelta(days=120),  # ~4 mesi -> GIALLO (Pre-Allarme)
-            "note": "Copertura bolli, assicurazioni e spese cicliche"
-        },
-        {
-            "id": "AST-03",
-            "nome": "BTP Valore Nov26 TF 3.60% (Scadenza Breve)",
-            "isin": "IT0005565391",
-            "categoria": "Obbligazione Governativa / BTP",
-            "vaso": "Vaso 3A (Auto / Medio Termine)",
-            "importo": 6000.0,
-            "pmc": 100.15,
-            "has_scadenza": True,
-            "scadenza": today + datetime.timedelta(days=25),   # ~25 giorni -> ROSSO (Scadenza Imminente)
-            "note": "Tranche per acconto veicolo Milestone H"
-        },
-        {
-            "id": "AST-04",
-            "nome": "BTP BTPei Mag33 Reale 0.10% (Held-to-Maturity)",
-            "isin": "IT0005543661",
-            "categoria": "Obbligazione Governativa / BTP",
-            "vaso": "Vaso 3A (Auto / Medio Termine)",
-            "importo": 10000.0,
-            "pmc": 92.40,
-            "has_scadenza": True,
-            "scadenza": today + datetime.timedelta(days=2400), # > 6 mesi -> VERDE (Regolare)
-            "note": "Immunizzazione saldo Milestone H con protezione FOI"
-        },
-        {
-            "id": "AST-05",
-            "nome": "SWDA - iShares Core MSCI World UCITS ETF",
-            "isin": "IE00B4L5Y983",
-            "categoria": "ETF Azionario (Core)",
-            "vaso": "Vaso 4 (Crescita / Core-Satellite)",
-            "importo": 20000.0,
-            "pmc": 84.20,
-            "has_scadenza": False,
-            "scadenza": None,
-            "note": "Core Azionario Globale ad accumulo dividendi"
-        },
-        {
-            "id": "AST-06",
-            "nome": "EIMI - iShares Core EM IMI UCITS ETF",
-            "isin": "IE00BKM4GZ66",
-            "categoria": "ETF/ETC Satellite",
-            "vaso": "Vaso 4 (Crescita / Core-Satellite)",
-            "importo": 5000.0,
-            "pmc": 31.10,
-            "has_scadenza": False,
-            "scadenza": None,
-            "note": "Satellite Mercati Emergenti (Inflow Rebalancing)"
-        }
-    ]
-
+    """Restituisce una lista vuota in modo che l'app parta pulita senza dati precompilati."""
+    return []
 
 # ------------------------------------------------------------------------------
 # 1. CONFIGURAZIONE PAGINA E STILE CSS FINTECH
@@ -3122,7 +3047,9 @@ with tab5:
         </div>
         """, unsafe_allow_html=True)
 
-    if not red_assets and not yellow_assets:
+    if not assets:
+        st.info("ℹ️ Nessuno strumento finanziario registrato nel portafoglio. Utilizza il modulo sottostante per inserire i tuoi titoli.")
+    elif not red_assets and not yellow_assets:
         st.markdown("""
         <div style="background: #ecfdf5; border-left: 5px solid #10b981; border-radius: 8px; padding: 12px 16px; margin-bottom: 16px; font-size: 0.9rem; color: #065f46;">
             🟢 <b>Nessun allarme di scadenza attivo:</b> Tutti i titoli a scadenza hanno orizzonte superiore a 6 mesi (&gt; 180 giorni) e decorrono regolarmente maturando cedole.
@@ -3151,69 +3078,72 @@ with tab5:
     # --------------------------------------------------------------------------
     # 5. GRAFICI DI AGGREGAZIONE (Asset Class & Vasi S-DFP)
     # --------------------------------------------------------------------------
-    col_dchart1, col_dchart2 = st.columns(2)
+    if assets:
+        col_dchart1, col_dchart2 = st.columns(2)
 
-    with col_dchart1:
-        cat_totals = {}
-        for a in assets:
-            cat_totals[a['categoria']] = cat_totals.get(a['categoria'], 0.0) + a['importo']
+        with col_dchart1:
+            cat_totals = {}
+            for a in assets:
+                cat_totals[a['categoria']] = cat_totals.get(a['categoria'], 0.0) + a['importo']
 
-        palette_cat = {
-            "Obbligazione Governativa / BTP": "#d97706",
-            "Obbligazione Corporate": "#ea580c",
-            "ETF Azionario (Core)": "#2563eb",
-            "ETF/ETC Satellite": "#8b5cf6",
-            "Strumento Monetario / Liquidità (€STR)": "#0ea5e9"
-        }
-        colors_cat = [palette_cat.get(c, "#64748b") for c in cat_totals.keys()]
+            palette_cat = {
+                "Obbligazione Governativa / BTP": "#d97706",
+                "Obbligazione Corporate": "#ea580c",
+                "ETF Azionario (Core)": "#2563eb",
+                "ETF/ETC Satellite": "#8b5cf6",
+                "Strumento Monetario / Liquidità (€STR)": "#0ea5e9"
+            }
+            colors_cat = [palette_cat.get(c, "#64748b") for c in cat_totals.keys()]
 
-        fig_cat = go.Figure(data=[go.Pie(
-            labels=list(cat_totals.keys()),
-            values=list(cat_totals.values()),
-            hole=0.60,
-            marker_colors=colors_cat,
-            textinfo='percent',
-            hovertemplate='<b>%{label}</b><br>Controvalore: %{value:,.2f} € (%{percent})<extra></extra>'
-        )])
-        fig_cat.update_layout(
-            title='<b>Ripartizione per Categoria Strumento</b>',
-            height=290,
-            margin=dict(t=40, b=20, l=10, r=10),
-            legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5, font=dict(size=10)),
-            template="plotly_white"
-        )
-        st.plotly_chart(fig_cat, use_container_width=True)
+            fig_cat = go.Figure(data=[go.Pie(
+                labels=list(cat_totals.keys()),
+                values=list(cat_totals.values()),
+                hole=0.60,
+                marker_colors=colors_cat,
+                textinfo='percent',
+                hovertemplate='<b>%{label}</b><br>Controvalore: %{value:,.2f} € (%{percent})<extra></extra>'
+            )])
+            fig_cat.update_layout(
+                title='<b>Ripartizione per Categoria Strumento</b>',
+                height=290,
+                margin=dict(t=40, b=20, l=10, r=10),
+                legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5, font=dict(size=10)),
+                template="plotly_white"
+            )
+            st.plotly_chart(fig_cat, use_container_width=True)
 
-    with col_dchart2:
-        vaso_totals = {}
-        for a in assets:
-            vaso_totals[a['vaso']] = vaso_totals.get(a['vaso'], 0.0) + a['importo']
+        with col_dchart2:
+            vaso_totals = {}
+            for a in assets:
+                vaso_totals[a['vaso']] = vaso_totals.get(a['vaso'], 0.0) + a['importo']
 
-        palette_vaso = {
-            "Vaso 1 (Emergenza)": "#2563eb",
-            "Vaso 2 (Sinking)": "#059669",
-            "Vaso 3B (Buffer Mutuo)": "#dc2626",
-            "Vaso 3A (Auto / Medio Termine)": "#d97706",
-            "Vaso 4 (Crescita / Core-Satellite)": "#4f46e5"
-        }
-        colors_vaso = [palette_vaso.get(v, "#64748b") for v in vaso_totals.keys()]
+            palette_vaso = {
+                "Vaso 1 (Emergenza)": "#2563eb",
+                "Vaso 2 (Sinking)": "#059669",
+                "Vaso 3B (Buffer Mutuo)": "#dc2626",
+                "Vaso 3A (Auto / Medio Termine)": "#d97706",
+                "Vaso 4 (Crescita / Core-Satellite)": "#4f46e5"
+            }
+            colors_vaso = [palette_vaso.get(v, "#64748b") for v in vaso_totals.keys()]
 
-        fig_vaso = go.Figure(data=[go.Pie(
-            labels=list(vaso_totals.keys()),
-            values=list(vaso_totals.values()),
-            hole=0.60,
-            marker_colors=colors_vaso,
-            textinfo='percent',
-            hovertemplate='<b>%{label}</b><br>Controvalore: %{value:,.2f} € (%{percent})<extra></extra>'
-        )])
-        fig_vaso.update_layout(
-            title='<b>Ripartizione per Vaso S-DFP</b>',
-            height=290,
-            margin=dict(t=40, b=20, l=10, r=10),
-            legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5, font=dict(size=10)),
-            template="plotly_white"
-        )
-        st.plotly_chart(fig_vaso, use_container_width=True)
+            fig_vaso = go.Figure(data=[go.Pie(
+                labels=list(vaso_totals.keys()),
+                values=list(vaso_totals.values()),
+                hole=0.60,
+                marker_colors=colors_vaso,
+                textinfo='percent',
+                hovertemplate='<b>%{label}</b><br>Controvalore: %{value:,.2f} € (%{percent})<extra></extra>'
+            )])
+            fig_vaso.update_layout(
+                title='<b>Ripartizione per Vaso S-DFP</b>',
+                height=290,
+                margin=dict(t=40, b=20, l=10, r=10),
+                legend=dict(orientation="h", yanchor="bottom", y=-0.25, xanchor="center", x=0.5, font=dict(size=10)),
+                template="plotly_white"
+            )
+            st.plotly_chart(fig_vaso, use_container_width=True)
+    else:
+        st.info("ℹ️ Nessuno strumento registrato: i grafici di ripartizione per categoria e per vaso appariranno una volta inseriti i titoli.")
 
     st.markdown("---")
 
@@ -3282,7 +3212,9 @@ with tab5:
 
     tot_saldi_dichiarati = v1_val_rec + v2_val_rec + v3b_val_rec + v3a_val_rec + v4_val_rec
     cassa_totale_libera = tot_saldi_dichiarati - tot_dossier
-    if abs(cassa_totale_libera) < 0.01:
+    if not assets and tot_saldi_dichiarati > 0:
+        st.info(f"💧 **Portafoglio Vuoto:** I saldi patrimoniali correnti risultano interamente in liquidità libera non allocata ({tot_saldi_dichiarati:,.2f} €). Inserisci i tuoi strumenti finanziari per monitorarne scadenze e vasi.")
+    elif abs(cassa_totale_libera) < 0.01:
         st.success("🎯 **Quadratura Perfetta:** Il 100% dei saldi patrimoniali dichiarati è impiegato in strumenti finanziari monitorati nel dossier.")
     elif cassa_totale_libera > 0:
         st.info(f"💧 **Liquidità Libera Complessiva:** Risultano **{cassa_totale_libera:,.2f} €** di cassa non ancora allocata in titoli specifici (giacenza liquida sui conti correnti/deposito liberi).")
@@ -3337,14 +3269,19 @@ with tab5:
             "Note Operative": a["note"] or "—"
         })
 
-    df_assets_view = pd.DataFrame(table_rows)
+    columns = [
+        "ID", "Stato Scadenza", "Denominazione Strumento", "ISIN",
+        "Categoria", "Vaso S-DFP", "Controvalore (€)", "PMC (€)",
+        "Data Scadenza", "Giorni Residui", "Note Operative"
+    ]
+    df_assets_view = pd.DataFrame(table_rows, columns=columns) if table_rows else pd.DataFrame(columns=columns)
     st.dataframe(df_assets_view, use_container_width=True, hide_index=True)
 
     col_act1, col_act2 = st.columns([3, 1])
     with col_act2:
-        if st.button("🔄 Ripristina Titoli Esempio S-DFP", use_container_width=True, help="Reimposta i 6 strumenti standard tipici del modello S-DFP"):
-            st.session_state["portfolio_assets"] = get_default_portfolio_assets()
-            st.success("Portafoglio reimpostato con successo ai titoli S-DFP standard!")
+        if st.button("🗑️ Svuota Portafoglio", use_container_width=True, help="Rimuove tutti gli strumenti e reimposta il portafoglio vuoto"):
+            st.session_state["portfolio_assets"] = []
+            st.success("Portafoglio svuotato!")
             st.rerun()
 
     # Form per Aggiunta Nuovo Strumento
