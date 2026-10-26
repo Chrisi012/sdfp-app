@@ -21,7 +21,7 @@ import datetime
 from datetime import date, timedelta
 
 try:
-    from streamlit_gsheets import GSheetsConnection
+ from gsheets_connector import GSheetsConnection
 except Exception:
     GSheetsConnection = None
 
